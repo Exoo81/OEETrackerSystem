@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	Tomcat JSP index page
+
+
+	Tomcat - Spring mvc hello world
 </body>
 </html>
