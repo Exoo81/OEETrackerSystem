@@ -9,6 +9,6 @@
 <body>
 
 
-	Tomcat - Spring mvc hello world Tiles v1.7
+	Tomcat - Spring mvc hello world Tiles v1.9
 </body>
 </html>
