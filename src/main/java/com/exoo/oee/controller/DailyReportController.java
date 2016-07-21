@@ -9,7 +9,7 @@ public class DailyReportController {
 	
 	@RequestMapping("/dailyReport")
 	public String dailyReport(){
-		return "WEB-INF/jsp/dailyReport.jsp";
+		return "dailyReport";
 	}
 
 }
