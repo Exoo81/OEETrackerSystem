@@ -13,7 +13,7 @@
 	
 	<dependencies>
 	
-		<!-- Apache Tiles dependency -->
+		<!-- Apache Tiles dependency moze trzeba dodać wszystkie-->
 		<dependency>
 			<groupId>org.apache.tiles</groupId>
 			<artifactId>tiles-core</artifactId>
