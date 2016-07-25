@@ -2,26 +2,34 @@ package com.exoo.oee.entity;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class User {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 	
+	@Column(unique=true, nullable=false)
 	private String username;
 	
+	@Column(nullable=false)
 	private String password;
 	
 	@ManyToMany
 	@JoinTable
 	private List<Role> roles;
+	
+	@OneToMany(mappedBy="user")
+	private List<DailyReport> dailyReports; 
 	
 	
 	/** Getters & Setters **/
@@ -57,5 +65,15 @@ public class User {
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
+
+	public List<DailyReport> getDailyReports() {
+		return dailyReports;
+	}
+
+	public void setDailyReports(List<DailyReport> dailyReports) {
+		this.dailyReports = dailyReports;
+	}
+	
+	
 
 }

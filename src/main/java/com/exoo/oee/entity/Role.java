@@ -16,7 +16,7 @@ public class Role {
 	@GeneratedValue
 	private Integer id;
 	
-	@Column(name="role_name")
+	@Column(name="role_name", unique=true)
 	private String roleName;
 	
 	@ManyToMany(mappedBy="roles")

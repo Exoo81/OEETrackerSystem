@@ -32,10 +32,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href='<spring:url value="/dailyReport.html" />'>OEE Tracker System</a>
+          <a class="navbar-brand" href='<spring:url value="/index.html" />'>OEE Tracker System</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
+          	<li><a href='<spring:url value="/index.html" />'>Home</a></li>
             <li><a href='<spring:url value="/dailyReport.html" />'>Daily report</a></li>
             <!-- <li><a href="#">Settings</a></li>
             <li><a href="#">Profile</a></li>
@@ -52,12 +53,12 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">Link</a></li>
+            <li class="active"><a href='<spring:url value="/index.html" />'>Home <span class="sr-only">(current)</span></a></li>
+            <li><a href='<spring:url value="/dailyReport.html" />'>Daily Report form</a></li>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Daily report</h1>
+          <h1 class="page-header"><tiles:insertAttribute name="header" /></h1>
           	<tiles:insertAttribute name="body"/>
 			<br><br>
         </div>

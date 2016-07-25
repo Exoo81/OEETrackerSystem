@@ -3,5 +3,6 @@
 	<persistence-unit name="OEETrackerSystem">
 		<class>com.exoo.oee.entity.User</class>
 		<class>com.exoo.oee.entity.Role</class>
+		<class>com.exoo.oee.entity.DailyReport</class>
 	</persistence-unit>
 </persistence>
