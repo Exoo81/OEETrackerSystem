@@ -12,13 +12,22 @@
 		<definition name="index" extends="common">
 			<put-attribute name="title" value="Welcome" />
 			<put-attribute name="header" value="Welcome" />
-			<put-attribute name="body" value="/WEB-INF/jsp/index.jsp"></put-attribute>
+			<put-attribute name="body" value="/WEB-INF/jsp/index.jsp" />
+			<put-attribute name="activePage" value="index" />
 		</definition>
 		
 		<definition name="dailyReport" extends="common">
 			<put-attribute name="title" value="Daily Report Page" />
 			<put-attribute name="header" value="Daily Report form" />
 			<put-attribute name="body" value="/WEB-INF/jsp/dailyReport.jsp"></put-attribute>
+			<put-attribute name="activePage" value="dailyReport" />
+		</definition>
+		
+		<definition name="users" extends="common">
+			<put-attribute name="title" value="Users List" />
+			<put-attribute name="header" value="Users List" />
+			<put-attribute name="body" value="/WEB-INF/jsp/users.jsp"></put-attribute>
+			<put-attribute name="activePage" value="users" />
 		</definition>
 		
 		

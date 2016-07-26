@@ -104,3 +104,26 @@ body {
   display: inline-block;
   border-radius: 50%;
 }
+.footer-oee{
+	margin-left: 20%;
+}
+.oee-header{
+	font-size: 30px;
+	text-align:center; 
+    vertical-align:middle;
+}
+
+.table-oee{
+	width: 80%;
+	font-size: 12px;
+	margin-left: 10%;
+}
+
+.td-oee{
+	text-align:center; 
+    vertical-align:middle;
+}
+
+.id-oee{
+	width: 5%;
+}

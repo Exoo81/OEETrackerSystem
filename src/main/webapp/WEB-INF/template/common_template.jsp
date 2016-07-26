@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles-extras" prefix="tilesx" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -22,7 +24,7 @@
 	</head>
 	
 	<body>
-	
+	<tilesx:useAttribute name="activePage"/>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -36,8 +38,9 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-          	<li><a href='<spring:url value="/index.html" />'>Home</a></li>
-            <li><a href='<spring:url value="/dailyReport.html" />'>Daily report</a></li>
+          	<li class="${activePage == 'index' ? 'active' : ''}"><a href='<spring:url value="/index.html" />'>Home</a></li>
+            <li class="${activePage == 'dailyReport' ? 'active' : ''}"><a href='<spring:url value="/dailyReport.html" />'>Daily report</a></li>
+            <li class="${activePage == 'users' ? 'active' : ''}"><a href='<spring:url value="/users.html" />'>Users</a></li>
             <!-- <li><a href="#">Settings</a></li>
             <li><a href="#">Profile</a></li>
             <li><a href="#">Help</a></li> -->
@@ -53,19 +56,20 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href='<spring:url value="/index.html" />'>Home <span class="sr-only">(current)</span></a></li>
-            <li><a href='<spring:url value="/dailyReport.html" />'>Daily Report form</a></li>
+            <li class="${activePage == 'index' ? 'active' : ''}"><a href='<spring:url value="/index.html" />'>Home </a></li>
+            <li class="${activePage == 'dailyReport' ? 'active' : ''}"><a href='<spring:url value="/dailyReport.html" />'>Daily Report form</a></li>
+            <li class="${activePage == 'users' ? 'active' : ''}"><a href='<spring:url value="/users.html" />'>Users</a></li>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header"><tiles:insertAttribute name="header" /></h1>
+          <h1 class="page-header oee-header"><tiles:insertAttribute name="header" /></h1>
           	<tiles:insertAttribute name="body"/>
 			<br><br>
         </div>
       </div>
     </div>
-    
-    <div class="footer">
+   
+    <div class="footer footer-oee">
 	    <center>
 			<tiles:insertAttribute name="footer"/>
 		</center>
