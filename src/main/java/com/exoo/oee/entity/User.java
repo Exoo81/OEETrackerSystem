@@ -7,9 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class User {
@@ -29,7 +31,10 @@ public class User {
 	private List<Role> roles;
 	
 	@OneToMany(mappedBy="user")
-	private List<DailyReport> dailyReports; 
+	private List<DailyReport> dailyReports;
+	
+	@OneToOne (mappedBy="user")
+	private UserDetails userDetails;
 	
 	
 	/** Getters & Setters **/
@@ -73,7 +78,13 @@ public class User {
 	public void setDailyReports(List<DailyReport> dailyReports) {
 		this.dailyReports = dailyReports;
 	}
-	
-	
+
+	public UserDetails getUserDetails() {
+		return userDetails;
+	}
+
+	public void setUserDetails(UserDetails userDetails) {
+		this.userDetails = userDetails;
+	}
 
 }

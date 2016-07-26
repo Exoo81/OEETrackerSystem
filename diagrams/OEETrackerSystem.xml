@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><entities>
 	<entity>
-		<entity-name>com.exoo.oee.entity.User</entity-name>
+		<entity-name>com.exoo.oee.entity.UserDetails</entity-name>
 		<entity-width>120</entity-width>
 		<entity-height>186</entity-height>
-		<entity-X-Coordinate>50</entity-X-Coordinate>
-		<entity-Y-Coordinate>70</entity-Y-Coordinate>
+		<entity-X-Coordinate>140</entity-X-Coordinate>
+		<entity-Y-Coordinate>60</entity-Y-Coordinate>
 		<primary-collapsed>false</primary-collapsed>
 		<relation-collapsed>false</relation-collapsed>
 		<basic-collapsed>false</basic-collapsed>
 	</entity>
 
 	<entity>
-		<entity-name>com.exoo.oee.entity.Role</entity-name>
+		<entity-name>com.exoo.oee.entity.User</entity-name>
 		<entity-width>120</entity-width>
-		<entity-height>146</entity-height>
-		<entity-X-Coordinate>50</entity-X-Coordinate>
-		<entity-Y-Coordinate>350</entity-Y-Coordinate>
+		<entity-height>206</entity-height>
+		<entity-X-Coordinate>430</entity-X-Coordinate>
+		<entity-Y-Coordinate>50</entity-Y-Coordinate>
 		<primary-collapsed>false</primary-collapsed>
 		<relation-collapsed>false</relation-collapsed>
 		<basic-collapsed>false</basic-collapsed>
@@ -25,8 +25,19 @@
 		<entity-name>com.exoo.oee.entity.DailyReport</entity-name>
 		<entity-width>120</entity-width>
 		<entity-height>186</entity-height>
-		<entity-X-Coordinate>350</entity-X-Coordinate>
-		<entity-Y-Coordinate>73</entity-Y-Coordinate>
+		<entity-X-Coordinate>690</entity-X-Coordinate>
+		<entity-Y-Coordinate>50</entity-Y-Coordinate>
+		<primary-collapsed>false</primary-collapsed>
+		<relation-collapsed>false</relation-collapsed>
+		<basic-collapsed>false</basic-collapsed>
+	</entity>
+
+	<entity>
+		<entity-name>com.exoo.oee.entity.Role</entity-name>
+		<entity-width>120</entity-width>
+		<entity-height>146</entity-height>
+		<entity-X-Coordinate>430</entity-X-Coordinate>
+		<entity-Y-Coordinate>310</entity-Y-Coordinate>
 		<primary-collapsed>false</primary-collapsed>
 		<relation-collapsed>false</relation-collapsed>
 		<basic-collapsed>false</basic-collapsed>

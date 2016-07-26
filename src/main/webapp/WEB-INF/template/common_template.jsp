@@ -18,6 +18,10 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 		<!-- JQuery -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<!-- Awesome fonts -->
+		<script src="https://use.fontawesome.com/969da422e1.js"></script>
+		<!-- Fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 		
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title><tiles:getAsString name="title" /></title>

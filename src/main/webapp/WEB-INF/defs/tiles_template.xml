@@ -10,7 +10,7 @@
 		</definition>
 		
 		<definition name="index" extends="common">
-			<put-attribute name="title" value="Welcome" />
+			<put-attribute name="title" value="Welcome Page" />
 			<put-attribute name="header" value="Welcome" />
 			<put-attribute name="body" value="/WEB-INF/jsp/index.jsp" />
 			<put-attribute name="activePage" value="index" />
@@ -24,10 +24,17 @@
 		</definition>
 		
 		<definition name="users" extends="common">
-			<put-attribute name="title" value="Users List" />
+			<put-attribute name="title" value="Users List Page" />
 			<put-attribute name="header" value="Users List" />
 			<put-attribute name="body" value="/WEB-INF/jsp/users.jsp"></put-attribute>
 			<put-attribute name="activePage" value="users" />
+		</definition>
+		
+		<definition name="user_details" extends="common">
+			<put-attribute name="title" value="User Details Page" />
+			<put-attribute name="header" value="User Details " />
+			<put-attribute name="body" value="/WEB-INF/jsp/user-details.jsp"></put-attribute>
+			<put-attribute name="activePage" value=" " />
 		</definition>
 		
 		
