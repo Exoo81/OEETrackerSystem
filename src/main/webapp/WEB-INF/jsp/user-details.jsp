@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ include file="../template/taglibs.jsp" %>
 
 
 <dl class="dl-horizontal">
@@ -16,4 +15,3 @@
 <a href='<spring:url value="/users.html" />' class="btn btn-info btn-sm">
 	<i class="fa fa-long-arrow-left" aria-hidden="true"></i> &nbsp;Back to Users List
 </a>
-
