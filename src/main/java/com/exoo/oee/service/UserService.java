@@ -5,6 +5,8 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.exoo.oee.repository.DailyReportRepository;
@@ -32,7 +34,7 @@ public class UserService {
 	@Transactional
 	public User getOneWithReports(int id) {
 		User user = getOne(id);
-		List<DailyReport> reportsList = dailyReportRepository.findByUser(user);
+		List<DailyReport> reportsList = dailyReportRepository.findByUser(user, new PageRequest(0, 10, Direction.DESC, "dateOfReport"));
 		user.setDailyReports(reportsList);
 		return user;
 	}
