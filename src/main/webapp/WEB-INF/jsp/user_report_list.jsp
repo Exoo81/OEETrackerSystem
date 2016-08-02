@@ -8,7 +8,7 @@
 	<thead>
 		
 	  <tr class="info">
-	  	<!-- <th class="td-oee-h td-oee-mainh" colspan="4"><c:out value="${reportsWoW.username }"/></th> -->
+	  	<th class="td-oee-h td-oee-mainh" colspan="4"><c:out value="${reportsWoW.username }"/></th>
 	  </tr>
 	  <tr class="info">
 	     <th class="td-oee-h id-oee">Id</th>

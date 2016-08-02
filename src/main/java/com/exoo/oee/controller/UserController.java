@@ -27,7 +27,7 @@ public class UserController {
 		return "user_details";
 	}
 	
-	@RequestMapping("/reports/{id}")
+	@RequestMapping("/user/{id}/reports")
 	public String getUserReport(Model model, @PathVariable int id){
 		model.addAttribute("reportsWoW", userService.getOneWithReports(id));
 		return "user_report_list";

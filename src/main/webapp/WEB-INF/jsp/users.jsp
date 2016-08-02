@@ -17,7 +17,7 @@
 			<td class="td-oee">${user.id}</td>
 			<td class="td-oee"><a href='<spring:url value="/users/${user.id}.html" />'>${user.username}</a></td>
 			<td class="td-oee">
-				<a class="btn btn-danger" href='<spring:url value="/reports/${user.id}.html" />'>
+				<a class="btn btn-danger" href='<spring:url value="/user/${user.id}/reports.html" />'>
   					<i class="fa fa-file-text-o" title="Daily reports list" aria-hidden="true"></i>
 				</a>
 			</td>
