@@ -37,5 +37,12 @@
 			<put-attribute name="activePage" value=" " />
 		</definition>
 		
+		<definition name="user_report_list" extends="common">
+			<put-attribute name="title" value="Daily Reports Page" />
+			<put-attribute name="header" value="Daily reports " />
+			<put-attribute name="body" value="/WEB-INF/jsp/user_report_list.jsp"></put-attribute>
+			<put-attribute name="activePage" value=" " />
+		</definition>
+		
 		
 	</tiles-definitions>

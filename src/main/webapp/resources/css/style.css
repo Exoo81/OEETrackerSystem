@@ -120,12 +120,32 @@ body {
 }
 
 .td-oee{
+	font-family: 'Raleway', sans-serif;
+	font-size: 14px;
+	font-weight:300;
 	text-align:center; 
     vertical-align:middle;
 }
 
+.td-oee-h{
+	font-family: 'Raleway', sans-serif;
+	font-size: 16px;
+	font-weight:600;
+	text-transform: uppercase;
+	text-align:center; 
+    vertical-align:middle
+}
+
+.td-oee-mainh{
+	font-size: 20px;
+}
+
 .id-oee{
 	width: 5%;
+}
+
+.dr-oee{
+	width: 15%;
 }
 
 .dt-oee{

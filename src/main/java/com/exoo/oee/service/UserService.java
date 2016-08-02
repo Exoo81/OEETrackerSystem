@@ -17,5 +17,11 @@ public class UserService {
 	public List<User> findAll(){
 		return userRepository.findAll();
 	}
+
+	// example for fetch=FetchType.LAZY
+	/*public User findOne(int id) {
+		// TODO Auto-generated method stub
+		return userRepository.findOne(id);
+	}*/
 	
 }
