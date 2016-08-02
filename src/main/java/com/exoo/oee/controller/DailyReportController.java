@@ -20,10 +20,10 @@ public class DailyReportController {
 		return "dailyReport";
 	}
 	
-	@RequestMapping("/reports/{id}")
+	/*@RequestMapping("/reports/{id}")
 	public String getListOfReportsBuUser(Model model, @PathVariable int id){
 		model.addAttribute("reportsWoW", dailyReportService.getReportList(id));
 		return "user_report_list";
 		
-	}
+	}*/
 }

@@ -7,7 +7,7 @@ import com.exoo.oee.entity.UserDetails;
 
 public interface UserDetailsRepository extends JpaRepository<UserDetails, Integer> {
 
-	@Query("select u from UserDetails u where u.user.id = ?1")
-	UserDetails findUserDetailsByUserId(int id);
+	//@Query("select u from UserDetails u where u.user.id = ?1")
+	//UserDetails findUserDetailsByUserId(int id);
 
 }

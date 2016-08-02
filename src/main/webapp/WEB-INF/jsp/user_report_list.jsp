@@ -8,7 +8,7 @@
 	<thead>
 		
 	  <tr class="info">
-	  	<th class="td-oee-h td-oee-mainh" colspan="4"><c:out value="${reportsWoW[0].user.username }"/></th>
+	  	<!-- <th class="td-oee-h td-oee-mainh" colspan="4"><c:out value="${reportsWoW.username }"/></th> -->
 	  </tr>
 	  <tr class="info">
 	     <th class="td-oee-h id-oee">Id</th>
@@ -18,7 +18,7 @@
 	  </tr>
 	</thead>
 	<tbody>
-		<c:forEach items="${reportsWoW}" var="report">
+		<c:forEach items="${reportsWoW.dailyReports}" var="report">
 			<tr>
 				<td class="td-oee">${report.id}</td>
 				<td class="td-oee">${report.dateOfReport}</td>

@@ -5,11 +5,11 @@
 
 <dl class="dl-horizontal">
   <dt class="dt-oee">First name:</dt>
-  <dd class="dd-oee">${userDetailsWoW.firstName}</dd>
+  <dd class="dd-oee">${userDetailsWoW.userDetails.firstName}</dd>
   <dt class="dt-oee">Last name:</dt>
-  <dd class="dd-oee">${userDetailsWoW.lastName}</dd>
+  <dd class="dd-oee">${userDetailsWoW.userDetails.lastName}</dd>
   <dt class="dt-oee">Job Title:</dt>
-  <dd class="dd-oee">${userDetailsWoW.jobTitle}</dd>
+  <dd class="dd-oee">${userDetailsWoW.userDetails.jobTitle}</dd>
 </dl>
 
 <a href='<spring:url value="/users.html" />' class="btn btn-info btn-sm">

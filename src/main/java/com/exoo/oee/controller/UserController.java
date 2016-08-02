@@ -21,7 +21,17 @@ public class UserController {
 		return "users";
 	}
 	
+	@RequestMapping("/users/{id}")
+	public String getUserDetailsByUserId(Model model, @PathVariable int id){
+		model.addAttribute("userDetailsWoW", userService.getOne(id));
+		return "user_details";
+	}
 	
+	@RequestMapping("/reports/{id}")
+	public String getUserReport(Model model, @PathVariable int id){
+		model.addAttribute("reportsWoW", userService.getOneWithReports(id));
+		return "user_report_list";
+	}
 	// example for fetch=FetchType.LAZY
 	/*@RequestMapping("/reports/{id}")
 	public String usersReports(Model model, @PathVariable int id){

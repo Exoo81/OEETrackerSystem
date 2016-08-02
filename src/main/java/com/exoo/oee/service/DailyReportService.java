@@ -16,9 +16,9 @@ public class DailyReportService {
 	private DailyReportRepository dailyReportRepository;
 	
 	
-	public List<DailyReport> getReportList(int id) {
-		return dailyReportRepository.findReportsByUser(id);
-	}
+	//public List<DailyReport> getReportList(int id) {
+	//	return dailyReportRepository.findReportsByUser(id);
+	//}
 
 	
 	

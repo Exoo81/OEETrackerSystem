@@ -10,12 +10,12 @@ import com.exoo.oee.repository.UserDetailsRepository;
 @Service
 public class UserDetailsService {
 	
-	@Autowired
-	private UserDetailsRepository userDetailsRepository;
+	//@Autowired
+	//private UserDetailsRepository userDetailsRepository;
 	
 
-	public UserDetails getUserDetails(int id){
-		return userDetailsRepository.findUserDetailsByUserId(id);
-	}
+	//public UserDetails getUserDetails(int id){
+	//	return userDetailsRepository.findUserDetailsByUserId(id);
+	//}
 
 }
