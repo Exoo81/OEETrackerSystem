@@ -72,5 +72,7 @@ public class DailyReport {
 	public void setUser(User user) {
 		this.user = user;
 	}
+	
+	
 
 }

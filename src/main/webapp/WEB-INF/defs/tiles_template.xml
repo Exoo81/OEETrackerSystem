@@ -5,7 +5,6 @@
        
 	<tiles-definitions>
 		<definition name="common" template="/WEB-INF/template/common_template.jsp">
-			<put-attribute name="header" value="/WEB-INF/template/header.jsp"/>
 			<put-attribute name="footer" value="/WEB-INF/template/footer.jsp" />
 		</definition>
 		
@@ -38,11 +37,25 @@
 		</definition>
 		
 		<definition name="user_report_list" extends="common">
-			<put-attribute name="title" value="Daily Reports Page" />
-			<put-attribute name="header" value="Daily reports " />
+			<put-attribute name="title" value="All Daily Reports" />
+			<put-attribute name="header" value="All Daily Reports" />
 			<put-attribute name="body" value="/WEB-INF/jsp/user_report_list.jsp"></put-attribute>
 			<put-attribute name="activePage" value=" " />
 		</definition>
 		
+		<definition name="user_register" extends="common">
+			<put-attribute name="title" value="User Registration" />
+			<put-attribute name="header" value="User Registration" />
+			<put-attribute name="body" value="/WEB-INF/jsp/user_register.jsp"></put-attribute>
+			<put-attribute name="activePage" value="register" />
+		</definition>
+		
+		<definition name="login" extends="common">
+			<put-attribute name="title" value="Login Page" />
+			<put-attribute name="header" value="Login Page" />
+			<put-attribute name="body" value="/WEB-INF/jsp/login.jsp"></put-attribute>
+			<put-attribute name="activePage" value="login" />
+		</definition>
+				
 		
 	</tiles-definitions>

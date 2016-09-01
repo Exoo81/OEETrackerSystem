@@ -45,4 +45,6 @@
 	
 	<jpa:repositories base-package="com.exoo.oee.repository" entity-manager-factory-ref="emf" transaction-manager-ref="transactionManager" />
 	
+	<import resource="security.xml"/>
+	
 </beans>
