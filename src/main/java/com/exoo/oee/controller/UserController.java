@@ -68,7 +68,7 @@ public class UserController {
 	@RequestMapping(value="/register", method=RequestMethod.POST)
 	public String doRegister(@ModelAttribute("user") User user){
 		userService.save(user);
-		return "user_register";
+		return "redirect:/register.html?success=true";
 	}
 	
 	// example for fetch=FetchType.LAZY

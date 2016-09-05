@@ -1,5 +1,6 @@
 package com.exoo.oee.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -9,11 +10,14 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.exoo.oee.repository.DailyReportRepository;
+import com.exoo.oee.repository.RoleRepository;
 import com.exoo.oee.repository.UserRepository;
 import com.exoo.oee.entity.DailyReport;
+import com.exoo.oee.entity.Role;
 import com.exoo.oee.entity.User;
 
 @Service
@@ -25,6 +29,9 @@ public class UserService {
 	
 	@Autowired
 	private DailyReportRepository dailyReportRepository;
+	
+	@Autowired
+	private RoleRepository roleRepository;
 	
 	
 	public Page<User> findAll(int pageNumber){
@@ -62,6 +69,15 @@ public class UserService {
 	}*/
 
 	public void save(User user) {
+		user.setEnabled(true);
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		user.setPassword(encoder.encode(user.getPassword()));
+		
+		List<Role> roles = new ArrayList<Role>();
+		roles.add(roleRepository.findByroleName("ROLE_OPERATOR"));
+		user.setRoles(roles);
+		
+		
 		userRepository.save(user);
 		
 	}

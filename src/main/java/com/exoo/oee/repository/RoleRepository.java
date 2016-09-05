@@ -6,4 +6,6 @@ import com.exoo.oee.entity.Role;
 
 public interface RoleRepository extends JpaRepository<Role, Integer> {
 
+	Role findByroleName(String name);
+
 }

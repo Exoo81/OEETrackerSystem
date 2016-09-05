@@ -10,6 +10,7 @@ import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.exoo.oee.entity.DailyReport;
@@ -42,23 +43,26 @@ public class InitDbService {
 	@PostConstruct
 	public void init(){
 		
-		/**SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy HH:mm:ss"); 
+		/*SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy HH:mm:ss"); 
 		
 		Role adminRole = new Role();
-		adminRole.setRoleName("ADMIN");
+		adminRole.setRoleName("ROLE_ADMIN");
 		roleRepository.save(adminRole);
 		
 		Role userRole = new Role();
-		userRole.setRoleName("OPERATOR");
+		userRole.setRoleName("ROLE_OPERATOR");
 		roleRepository.save(userRole);
 		
 		Role analystRole = new Role();
-		analystRole.setRoleName("ANALYST");
+		analystRole.setRoleName("ROLE_ANALYST");
 		roleRepository.save(analystRole);
 		
 		User masterUser = new User();
+		masterUser.setEnabled(true);
 		masterUser.setUsername("exoo");
-		masterUser.setPassword("klocek12");
+		//masterUser.setPassword("klocek12");
+			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		masterUser.setPassword(encoder.encode("klocek12"));
 		List<Role> rolesMaster = new ArrayList<Role>();
 		rolesMaster.add(userRole);
 		rolesMaster.add(adminRole);
@@ -75,8 +79,10 @@ public class InitDbService {
 			userDetailsRepository.save(masterUserDet);
 		
 		User operatorUser1 = new User();
+		operatorUser1.setEnabled(true);
 		operatorUser1.setUsername("operator1");
-		operatorUser1.setPassword("operator1");
+		//operatorUser1.setPassword("operator1");
+		operatorUser1.setPassword(encoder.encode("operator1"));
 		List<Role> rolesOperator1 = new ArrayList<Role>();
 		rolesOperator1.add(userRole);
 		operatorUser1.setRoles(rolesOperator1);	
@@ -137,8 +143,10 @@ public class InitDbService {
 			dailyReportRepository.save(dr15);
 		
 		User operatorUser2 = new User();
+		operatorUser2.setEnabled(true);
 		operatorUser2.setUsername("operator2");
-		operatorUser2.setPassword("operator2");
+		//operatorUser2.setPassword("operator2");
+		operatorUser2.setPassword(encoder.encode("operator2"));
 		List<Role> rolesOperator2 = new ArrayList<Role>();
 		rolesOperator2.add(userRole);
 		operatorUser2.setRoles(rolesOperator2);
@@ -200,8 +208,10 @@ public class InitDbService {
 		
 		
 		User operatorUser3 = new User();
+		operatorUser3.setEnabled(true);
 		operatorUser3.setUsername("operator3");
-		operatorUser3.setPassword("operator3");
+		//operatorUser3.setPassword("operator3");
+		operatorUser3.setPassword(encoder.encode("operator3"));
 		List<Role> rolesOperator3 = new ArrayList<Role>();
 		rolesOperator3.add(userRole);
 		operatorUser3.setRoles(rolesOperator3);
@@ -262,8 +272,10 @@ public class InitDbService {
 			dailyReportRepository.save(dr35);
 		
 		User analystUser1 = new User();
+		analystUser1.setEnabled(true);
 		analystUser1.setUsername("analyst1");
-		analystUser1.setPassword("analyst1");
+		//analystUser1.setPassword("analyst1");
+		analystUser1.setPassword(encoder.encode("analyst1"));
 		List<Role> rolesAnalyst1 = new ArrayList<Role>();
 		rolesAnalyst1.add(analystRole);
 		analystUser1.setRoles(rolesAnalyst1);
@@ -275,7 +287,7 @@ public class InitDbService {
 			analystUser1Det.setLastName("Jolie");
 			analystUser1Det.setJobTitle("Data analysis specialist");
 			analystUser1Det.setUser(analystUser1);
-			userDetailsRepository.save(analystUser1Det);**/
+			userDetailsRepository.save(analystUser1Det);*/
 		
 	
 	}
