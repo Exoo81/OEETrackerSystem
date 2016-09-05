@@ -46,7 +46,7 @@
           	<security:authorize access="isAuthenticated()">
 	          	<li class="${activePage == 'index' ? 'active' : ''}"><a href='<spring:url value="/index.html" />'>Home</a></li>
 	            <li class="${activePage == 'dailyReport' ? 'active' : ''}"><a href='<spring:url value="/dailyReport.html" />'>Daily report</a></li>
-		        <security:authorize access="hasRole('ADMIN')">
+		        <security:authorize access="hasRole('ROLE_ADMIN')">
 		            <li class="${activePage == 'users' ? 'active' : ''}"><a href='<spring:url value="/1/users.html" />'>Users</a></li>  
             		<li class="${activePage == 'register' ? 'active' : ''}"><a href='<spring:url value="/register.html" />'>Register</a></li>
             	</security:authorize>
@@ -76,7 +76,7 @@
           <ul class="nav nav-sidebar">
 	            <li class="${activePage == 'index' ? 'active' : ''}"><a href='<spring:url value="/index.html" />'>Home </a></li>
 	            <li class="${activePage == 'dailyReport' ? 'active' : ''}"><a href='<spring:url value="/dailyReport.html" />'>Daily Report form</a></li>
-	            <security:authorize access="hasRole('ADMIN')">
+	            <security:authorize access="hasRole('ROLE_ADMIN')">
 	            	<li class="${activePage == 'users' ? 'active' : ''}"><a href='<spring:url value="/1/users.html" />'>Users</a></li>
 	            </security:authorize>
           </ul>

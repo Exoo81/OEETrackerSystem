@@ -21,6 +21,7 @@ public class DailyReportController {
 	
 	@RequestMapping("/dailyReport")
 	public String dailyReport(){
+		
 		return "dailyReport";
 	}
 	

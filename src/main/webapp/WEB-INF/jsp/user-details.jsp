@@ -12,6 +12,6 @@
   <dd class="dd-oee">${userDetailsWoW.userDetails.jobTitle}</dd>
 </dl>
 
-<a href='<spring:url value="/users.html" />' class="btn btn-info btn-sm">
+<a href='<spring:url value="/1/users.html" />' class="btn btn-info btn-sm">
 	<i class="fa fa-long-arrow-left" aria-hidden="true"></i> &nbsp;Back to Users List
 </a>

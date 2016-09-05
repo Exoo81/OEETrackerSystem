@@ -11,9 +11,9 @@
 		<intercept-url pattern="/index**" access="isAuthenticated()" />
 		<intercept-url pattern="/dailyReport**" access="isAuthenticated()" />
 		<intercept-url pattern="/login**" access="! isAuthenticated()" />
-		<intercept-url pattern="/*/users**" access="hasRole('ADMIN')" /> 
-		<intercept-url pattern="/users/**" access="hasRole('ADMIN')" /> 
-		<intercept-url pattern="/register**" access="hasRole('ADMIN')" />
+		<intercept-url pattern="/*/users**" access="hasRole('ROLE_ADMIN')" /> 
+		<intercept-url pattern="/users/**" access="hasRole('ROLE_ADMIN')" /> 
+		<intercept-url pattern="/register**" access="hasRole('ROLE_ADMIN')" />
 		<form-login login-page="/login.html" />
 		<logout logout-url="/logout" />
 		<csrf disabled="true" />
@@ -21,10 +21,18 @@
 
 	<authentication-manager>
 		<authentication-provider>
-			<user-service>
+			<!-- <user-service>
 				<user name="exoo" password="klocek12" authorities="ROLE_OPERATOR, ROLE_ADMIN" />
 				<user name="operator1" password="operator1" authorities="ROLE_OPERATOR" />
-			</user-service>
+			</user-service> -->
+			
+			<jdbc-user-service data-source-ref="dataSource"
+								authorities-by-username-query="SELECT user.username, role.role_name FROM db_oee.user
+																JOIN db_oee.user_role on user.id = user_role.users_id
+																JOIN db_oee.role  on user_role.roles_id = role.id
+																WHERE user.username = ?" 
+								users-by-username-query="SELECT username, password,1 from db_oee.user where username=?"/>
+			
 		</authentication-provider>
 	</authentication-manager>
 
