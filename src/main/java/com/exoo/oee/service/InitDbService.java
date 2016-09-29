@@ -2,13 +2,21 @@ package com.exoo.oee.service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.exoo.oee.entity.DailyReport;
+import com.exoo.oee.entity.Role;
+import com.exoo.oee.entity.User;
+import com.exoo.oee.entity.UserDetails;
 import com.exoo.oee.repository.DailyReportRepository;
 import com.exoo.oee.repository.RoleRepository;
 import com.exoo.oee.repository.UserDetailsRepository;

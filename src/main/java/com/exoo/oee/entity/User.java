@@ -108,5 +108,14 @@ public class User {
 		this.createdProductionLines = createdProductionLines;
 	}
 
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", password="
+				+ password + ", enabled=" + enabled + ", roles=" + roles
+				+ ", userDetails=" + userDetails + "]";
+	}
+
+	
+
 
 }

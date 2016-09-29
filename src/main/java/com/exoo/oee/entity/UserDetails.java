@@ -80,6 +80,13 @@ public class UserDetails {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	@Override
+	public String toString() {
+		return "UserDetails [id=" + id + ", firstName=" + firstName
+				+ ", lastName=" + lastName + ", jobTitle=" + jobTitle
+				+ ", email=" + email + "]";
+	}
 	
 	
 }

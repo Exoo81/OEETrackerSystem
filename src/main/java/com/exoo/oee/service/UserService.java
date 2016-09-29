@@ -1,5 +1,6 @@
 package com.exoo.oee.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -13,9 +14,13 @@ import org.springframework.stereotype.Service;
 
 import com.exoo.oee.repository.DailyReportRepository;
 import com.exoo.oee.repository.RoleRepository;
+import com.exoo.oee.repository.UserDetailsRepository;
 import com.exoo.oee.repository.UserRepository;
+import com.exoo.oee.wrapper.UserRegistrationWrapper;
 import com.exoo.oee.entity.DailyReport;
+import com.exoo.oee.entity.Role;
 import com.exoo.oee.entity.User;
+import com.exoo.oee.entity.UserDetails;
 
 @Service
 @Transactional
@@ -29,6 +34,8 @@ public class UserService {
 	
 	@Autowired
 	private RoleRepository roleRepository;
+	
+	@Autowired UserDetailsRepository userDetailsRepository;
 	
 	
 	public Page<User> findAll(int pageNumber){
@@ -65,17 +72,34 @@ public class UserService {
 		return userRepository.findOne(id);
 	}*/
 
-	public void save(User user) {
-		user.setEnabled(true);
-		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		user.setPassword(encoder.encode(user.getPassword()));
+	public void save(UserRegistrationWrapper newUser) {
+		User user = new User();
+			user.setEnabled(true);
+			user.setUsername(newUser.getUsername());
+			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+			user.setPassword(encoder.encode(newUser.getPassword()));
 		
-		/*List<Role> roles = new ArrayList<Role>();
-		roles.add(roleRepository.findByroleName("ROLE_OPERATOR"));
-		user.setRoles(roles);*/
+			List<Role> roles = new ArrayList<Role>();
+				roles = roleRepository.findAll(newUser.getRoleId());
+			
+			user.setRoles(roles);
+			
+			userRepository.save(user);
+			
+			UserDetails userDetails = new UserDetails();
+				userDetails.setFirstName(newUser.getFirstName());
+				userDetails.setLastName(newUser.getLastName());
+				userDetails.setJobTitle(newUser.getJobTitle());
+				userDetails.setEmail(newUser.getEmail());
+				userDetails.setUser(user);
+			
+				userDetailsRepository.save(userDetails);
+			//user.setUserDetails(userDetails);
+			
+		
+			System.out.println(user.toString());
 		
 		
-		userRepository.save(user);
 		
 	}
 
