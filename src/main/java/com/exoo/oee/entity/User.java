@@ -4,11 +4,9 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
@@ -31,13 +29,16 @@ public class User {
 	
 	@ManyToMany
 	@JoinTable
-	private List<Role> roles;
+	private List<Role> roles ;//= new ArrayList<Role>();
 	
-	@OneToMany(mappedBy="user")
+	@OneToMany(mappedBy="reportCreatedBy")
 	private List<DailyReport> dailyReports;
 	
 	@OneToOne (mappedBy="user")
 	private UserDetails userDetails;
+	
+	@OneToMany(mappedBy="productionLineCreatedBy")
+	private List<ProductionLine> createdProductionLines;
 	
 	
 	/** Getters & Setters **/
@@ -97,5 +98,15 @@ public class User {
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
+
+	public List<ProductionLine> getCreatedProductionLines() {
+		return createdProductionLines;
+	}
+
+	public void setCreatedProductionLines(
+			List<ProductionLine> createdProductionLines) {
+		this.createdProductionLines = createdProductionLines;
+	}
+
 
 }

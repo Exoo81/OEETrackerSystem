@@ -8,17 +8,18 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
+		<!-- JQuery -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<!-- minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		
 		<spring:url value="/resources/css/style.css" var="styleCSS" />
 		<!-- minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 		<!-- Custom CSS style -->
 		<link href="${styleCSS}" rel="stylesheet"/>
 		<!-- theme -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-		<!-- minified JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-		<!-- JQuery -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 		<!-- Awesome fonts -->
 		<script src="https://use.fontawesome.com/969da422e1.js"></script>
 		<!-- Fonts -->
@@ -29,6 +30,7 @@
 	</head>
 	
 	<body>
+	
 	<tilesx:useAttribute name="activePage"/>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
@@ -44,10 +46,7 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
           	<security:authorize access="isAuthenticated()">
-	          	<li class="${activePage == 'index' ? 'active' : ''}"><a href='<spring:url value="/index.html" />'>Home</a></li>
-	            <li class="${activePage == 'dailyReport' ? 'active' : ''}"><a href='<spring:url value="/dailyReport.html" />'>Daily report</a></li>
-		        <security:authorize access="hasRole('ROLE_ADMIN')">
-		            <li class="${activePage == 'users' ? 'active' : ''}"><a href='<spring:url value="/1/users.html" />'>Users</a></li>  
+		        <security:authorize access="hasRole('ROLE_ADMIN')">  
             		<li class="${activePage == 'register' ? 'active' : ''}"><a href='<spring:url value="/register.html" />'>Register</a></li>
             	</security:authorize>
             </security:authorize>
@@ -55,6 +54,7 @@
             	<li class="${activePage == 'login' ? 'active' : ''}"><a href='<spring:url value="/login.html" />'>Login</a></li>
             </security:authorize>
             <security:authorize access="isAuthenticated()">
+            	<li><a href='<spring:url value="/account.html" />'>My Account</a></li>
             	<li><a href='<spring:url value="/logout" />'>Logout</a></li>
             </security:authorize>
             <!-- <li><a href="#">Settings</a></li>
@@ -79,6 +79,7 @@
 	            <security:authorize access="hasRole('ROLE_ADMIN')">
 	            	<li class="${activePage == 'users' ? 'active' : ''}"><a href='<spring:url value="/1/users.html" />'>Users</a></li>
 	            </security:authorize>
+	            <li class="${activePage == 'productionLinesList' ? 'active' : ''}"><a href='<spring:url value="/1/production_lines.html" />'>Production Lines</a></li>
           </ul>
         </div>
         </security:authorize>

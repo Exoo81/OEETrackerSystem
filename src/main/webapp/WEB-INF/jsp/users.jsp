@@ -38,41 +38,47 @@
 	</tbody>
 </table>
 
-<center>
-    <ul class="pagination">
-        <c:choose>
-            <c:when test="${currentIndex == 1}">
-                <li class="disabled"><a href="#"><span aria-hidden="true">&larr;</span> Newer</a></li>
-                <li class="disabled"><a href="#">&laquo;</a></li>
-            </c:when>
-            <c:otherwise>
-                <li><a href="${firstUrl}"><span aria-hidden="true">&larr;</span> Newer</a></li>
-                <li><a href="${prevUrl}">&laquo;</a></li>
-            </c:otherwise>
-        </c:choose>
-        
-        
-        <c:forEach var="i" begin="${beginIndex}" end="${endIndex}">
-            <c:url var="pageUrl" value="/${i}/users.html" />
-            <c:choose>
-                <c:when test="${i == currentIndex}">
-                    <li class="active"><a href="${pageUrl}"><c:out value="${i}" /></a></li>
-                </c:when>
-                <c:otherwise>
-                    <li><a href="${pageUrl}"><c:out value="${i}" /></a></li>
-                </c:otherwise>
-            </c:choose>
-        </c:forEach>
-        
-        <c:choose>
-            <c:when test="${currentIndex == deploymentUsers.totalPages}">
-                <li class="disabled"><a href="#">&raquo;</a></li>
-                <li class="disabled"><a href="#">Older <span aria-hidden="true">&rarr;</span></a></li>
-            </c:when>
-            <c:otherwise>
-                <li><a href="${nextUrl}">&raquo;</a></li>
-                <li><a href="${lastUrl}">Older <span aria-hidden="true">&rarr;</span></a></li>
-            </c:otherwise>
-        </c:choose>
-    </ul>
-</center>
+<c:if test="${deploymentUsers.totalPages != 0}">
+	<center>
+		<ul class="pagination">
+			<c:choose>
+				<c:when test="${currentIndex == 1}">
+					<li class="disabled"><a href="#"><span aria-hidden="true">&larr;</span>
+							Newer</a></li>
+					<li class="disabled"><a href="#">&laquo;</a></li>
+				</c:when>
+				<c:otherwise>
+					<li><a href="${firstUrl}"><span aria-hidden="true">&larr;</span>
+							Newer</a></li>
+					<li><a href="${prevUrl}">&laquo;</a></li>
+				</c:otherwise>
+			</c:choose>
+
+
+			<c:forEach var="i" begin="${beginIndex}" end="${endIndex}">
+				<c:url var="pageUrl" value="/${i}/users.html" />
+				<c:choose>
+					<c:when test="${i == currentIndex}">
+						<li class="active"><a href="${pageUrl}"><c:out
+									value="${i}" /></a></li>
+					</c:when>
+					<c:otherwise>
+						<li><a href="${pageUrl}"><c:out value="${i}" /></a></li>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+
+			<c:choose>
+				<c:when test="${currentIndex == deploymentUsers.totalPages}">
+					<li class="disabled"><a href="#">&raquo;</a></li>
+					<li class="disabled"><a href="#">Older <span
+							aria-hidden="true">&rarr;</span></a></li>
+				</c:when>
+				<c:otherwise>
+					<li><a href="${nextUrl}">&raquo;</a></li>
+					<li><a href="${lastUrl}">Older <span aria-hidden="true">&rarr;</span></a></li>
+				</c:otherwise>
+			</c:choose>
+		</ul>
+	</center>
+</c:if>

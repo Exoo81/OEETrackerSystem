@@ -2,10 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../template/taglibs.jsp" %>
 
-<c:url var="firstUrl" value="/user/${dailyReports[0].user.id}/1/reports.html" />
-<c:url var="lastUrl" value="/user/${dailyReports[0].user.id}/${deploymentReports.totalPages}/reports.html" />
-<c:url var="prevUrl" value="/user/${dailyReports[0].user.id}/${currentIndex - 1}/reports.html" />
-<c:url var="nextUrl" value="/user/${dailyReports[0].user.id}/${currentIndex + 1}/reports.html" />
+<c:url var="firstUrl" value="/user/${dailyReports[0].reportCreatedBy.id}/1/reports.html" />
+<c:url var="lastUrl" value="/user/${dailyReports[0].reportCreatedBy.id}/${deploymentReports.totalPages}/reports.html" />
+<c:url var="prevUrl" value="/user/${dailyReports[0].reportCreatedBy.id}/${currentIndex - 1}/reports.html" />
+<c:url var="nextUrl" value="/user/${dailyReports[0].reportCreatedBy.id}/${currentIndex + 1}/reports.html" />
 
 
 <table class="table table-bordered table-hover table-oee">
@@ -37,42 +37,47 @@
 	<i class="fa fa-long-arrow-left" aria-hidden="true"></i> &nbsp;Back to Users List
 </a>
 
+<c:if test="${deploymentUsers.totalPages != 0}">
+	<center>
+		<ul class="pagination">
+			<c:choose>
+				<c:when test="${currentIndex == 1}">
+					<li class="disabled"><a href="#"><span aria-hidden="true">&larr;</span>
+							Newer</a></li>
+					<li class="disabled"><a href="#">&laquo;</a></li>
+				</c:when>
+				<c:otherwise>
+					<li><a href="${firstUrl}"><span aria-hidden="true">&larr;</span>
+							Newer</a></li>
+					<li><a href="${prevUrl}">&laquo;</a></li>
+				</c:otherwise>
+			</c:choose>
 
-<center>
-    <ul class="pagination">
-        <c:choose>
-            <c:when test="${currentIndex == 1}">
-                <li class="disabled"><a href="#"><span aria-hidden="true">&larr;</span> Newer</a></li>
-                <li class="disabled"><a href="#">&laquo;</a></li>
-            </c:when>
-            <c:otherwise>
-                <li><a href="${firstUrl}"><span aria-hidden="true">&larr;</span> Newer</a></li>
-                <li><a href="${prevUrl}">&laquo;</a></li>
-            </c:otherwise>
-        </c:choose>
-        
-        
-        <c:forEach var="i" begin="${beginIndex}" end="${endIndex}">
-            <c:url var="pageUrl" value="/user/${id}/${i}/reports.html" />
-            <c:choose>
-                <c:when test="${i == currentIndex}">
-                    <li class="active"><a href="${pageUrl}"><c:out value="${i}" /></a></li>
-                </c:when>
-                <c:otherwise>
-                    <li><a href="${pageUrl}"><c:out value="${i}" /></a></li>
-                </c:otherwise>
-            </c:choose>
-        </c:forEach>
-        
-        <c:choose>
-            <c:when test="${currentIndex == deploymentReports.totalPages}">
-                <li class="disabled"><a href="#">&raquo;</a></li>
-                <li class="disabled"><a href="#">Older <span aria-hidden="true">&rarr;</span></a></li>
-            </c:when>
-            <c:otherwise>
-                <li><a href="${nextUrl}">&raquo;</a></li>
-                <li><a href="${lastUrl}">Older <span aria-hidden="true">&rarr;</span></a></li>
-            </c:otherwise>
-        </c:choose>
-    </ul>
-</center>
+
+			<c:forEach var="i" begin="${beginIndex}" end="${endIndex}">
+				<c:url var="pageUrl" value="/user/${id}/${i}/reports.html" />
+				<c:choose>
+					<c:when test="${i == currentIndex}">
+						<li class="active"><a href="${pageUrl}"><c:out
+									value="${i}" /></a></li>
+					</c:when>
+					<c:otherwise>
+						<li><a href="${pageUrl}"><c:out value="${i}" /></a></li>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+
+			<c:choose>
+				<c:when test="${currentIndex == deploymentReports.totalPages}">
+					<li class="disabled"><a href="#">&raquo;</a></li>
+					<li class="disabled"><a href="#">Older <span
+							aria-hidden="true">&rarr;</span></a></li>
+				</c:when>
+				<c:otherwise>
+					<li><a href="${nextUrl}">&raquo;</a></li>
+					<li><a href="${lastUrl}">Older <span aria-hidden="true">&rarr;</span></a></li>
+				</c:otherwise>
+			</c:choose>
+		</ul>
+	</center>film 30 
+</c:if>

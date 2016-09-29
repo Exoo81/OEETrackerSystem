@@ -2,21 +2,13 @@ package com.exoo.oee.service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-
 import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.exoo.oee.entity.DailyReport;
-import com.exoo.oee.entity.Role;
-import com.exoo.oee.entity.User;
-import com.exoo.oee.entity.UserDetails;
 import com.exoo.oee.repository.DailyReportRepository;
 import com.exoo.oee.repository.RoleRepository;
 import com.exoo.oee.repository.UserDetailsRepository;
@@ -98,7 +90,7 @@ public class InitDbService {
 			
 			// operatorUser1 - DailyReports 
 			DailyReport dr11 = new DailyReport();
-			dr11.setUser(operatorUser1);
+			dr11.setReportCreatedBy(operatorUser1);
 			dr11.setShift("day");
 				String dateString11 = "01/07/2016 15:55:00";
 				Date date11 = formatStringToDate(sdf,dateString11);
@@ -107,7 +99,7 @@ public class InitDbService {
 			dailyReportRepository.save(dr11);
 			
 			DailyReport dr12 = new DailyReport();
-			dr12.setUser(operatorUser1);
+			dr12.setReportCreatedBy(operatorUser1);
 			dr12.setShift("day");
 				String dateString12 = "02/07/2016 15:51:00";
 				Date date12 = formatStringToDate(sdf,dateString12);
@@ -116,7 +108,7 @@ public class InitDbService {
 			dailyReportRepository.save(dr12);
 			
 			DailyReport dr13 = new DailyReport();
-			dr13.setUser(operatorUser1);
+			dr13.setReportCreatedBy(operatorUser1);
 			dr13.setShift("day");
 				String dateString13 = "03/07/2016 15:56:00";
 				Date date13 = formatStringToDate(sdf,dateString13);
@@ -125,7 +117,7 @@ public class InitDbService {
 			dailyReportRepository.save(dr13);
 			
 			DailyReport dr14 = new DailyReport();
-			dr14.setUser(operatorUser1);
+			dr14.setReportCreatedBy(operatorUser1);
 			dr14.setShift("day");
 				String dateString14 = "04/07/2016 15:59:00";
 				Date date14 = formatStringToDate(sdf,dateString14);
@@ -134,7 +126,7 @@ public class InitDbService {
 			dailyReportRepository.save(dr14);
 			
 			DailyReport dr15 = new DailyReport();
-			dr15.setUser(operatorUser1);
+			dr15.setReportCreatedBy(operatorUser1);
 			dr15.setShift("day");
 				String dateString15 = "05/07/2016 15:59:00";
 				Date date15 = formatStringToDate(sdf,dateString15);
@@ -162,7 +154,7 @@ public class InitDbService {
 			
 			// operatorUser2 - DailyReports
 			DailyReport dr21 = new DailyReport();
-			dr21.setUser(operatorUser2);
+			dr21.setReportCreatedBy(operatorUser2);
 			dr21.setShift("evening");
 				String dateString21 = "01/07/2016 23:55:00";
 				Date date21 = formatStringToDate(sdf,dateString21);
@@ -171,7 +163,7 @@ public class InitDbService {
 			dailyReportRepository.save(dr21);
 			
 			DailyReport dr22 = new DailyReport();
-			dr22.setUser(operatorUser2);
+			dr22.setReportCreatedBy(operatorUser2);
 			dr22.setShift("evening");
 				String dateString22 = "02/07/2016 23:51:00";
 				Date date22 = formatStringToDate(sdf,dateString22);
@@ -180,7 +172,7 @@ public class InitDbService {
 			dailyReportRepository.save(dr22);
 			
 			DailyReport dr23 = new DailyReport();
-			dr23.setUser(operatorUser2);
+			dr23.setReportCreatedBy(operatorUser2);
 			dr23.setShift("evening");
 				String dateString23 = "03/07/2016 23:56:00";
 				Date date23 = formatStringToDate(sdf,dateString23);
@@ -189,7 +181,7 @@ public class InitDbService {
 			dailyReportRepository.save(dr23);
 			
 			DailyReport dr24 = new DailyReport();
-			dr24.setUser(operatorUser2);
+			dr24.setReportCreatedBy(operatorUser2);
 			dr24.setShift("evening");
 				String dateString24 = "04/07/2016 23:59:00";
 				Date date24 = formatStringToDate(sdf,dateString24);
@@ -198,7 +190,7 @@ public class InitDbService {
 			dailyReportRepository.save(dr24);
 			
 			DailyReport dr25 = new DailyReport();
-			dr25.setUser(operatorUser2);
+			dr25.setReportCreatedBy(operatorUser2);
 			dr25.setShift("evening");
 				String dateString25 = "05/07/2016 23:59:00";
 				Date date25 = formatStringToDate(sdf,dateString25);
@@ -227,7 +219,7 @@ public class InitDbService {
 			
 			// operatorUser3 - DailyReports
 			DailyReport dr31 = new DailyReport();
-			dr31.setUser(operatorUser3);
+			dr31.setReportCreatedBy(operatorUser3);
 			dr31.setShift("night");
 				String dateString31 = "01/07/2016 06:55:00";
 				Date date31 = formatStringToDate(sdf,dateString31);
@@ -236,7 +228,7 @@ public class InitDbService {
 			dailyReportRepository.save(dr31);
 			
 			DailyReport dr32 = new DailyReport();
-			dr32.setUser(operatorUser3);
+			dr32.setReportCreatedBy(operatorUser3);
 			dr32.setShift("night");
 				String dateString32 = "02/07/2016 06:51:00";
 				Date date32 = formatStringToDate(sdf,dateString32);
@@ -245,7 +237,7 @@ public class InitDbService {
 			dailyReportRepository.save(dr32);
 			
 			DailyReport dr33 = new DailyReport();
-			dr33.setUser(operatorUser3);
+			dr33.setReportCreatedBy(operatorUser3);
 			dr33.setShift("night");
 				String dateString33 = "03/07/2016 06:56:00";
 				Date date33 = formatStringToDate(sdf,dateString33);;
@@ -254,7 +246,7 @@ public class InitDbService {
 			dailyReportRepository.save(dr33);
 			
 			DailyReport dr34 = new DailyReport();
-			dr34.setUser(operatorUser3);
+			dr34.setReportCreatedBy(operatorUser3);
 			dr34.setShift("night");
 				String dateString34 = "04/07/2016 06:59:00";
 				Date date34 = formatStringToDate(sdf,dateString34);
@@ -263,7 +255,7 @@ public class InitDbService {
 			dailyReportRepository.save(dr34);
 			
 			DailyReport dr35 = new DailyReport();
-			dr35.setUser(operatorUser3);
+			dr35.setReportCreatedBy(operatorUser3);
 			dr35.setShift("night");
 				String dateString35 = "05/07/2016 06:59:00";
 				Date date35 = formatStringToDate(sdf,dateString35);

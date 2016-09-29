@@ -1,7 +1,5 @@
 package com.exoo.oee.service;
 
-import java.util.List;
-
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +33,7 @@ public class DailyReportService {
 		User user = userRepository.findOne(id);
         PageRequest request =
             new PageRequest(pageNumber - 1, 10, Sort.Direction.DESC, "dateOfReport");
-        return dailyReportRepository.findByUser(user, request);
+        return dailyReportRepository.findByReportCreatedBy(user, request);
     }
 
 

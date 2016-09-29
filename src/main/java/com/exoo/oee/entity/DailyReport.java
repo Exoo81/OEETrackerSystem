@@ -26,8 +26,8 @@ public class DailyReport {
 	private Integer actualOutput;
 	
 	@ManyToOne
-	@JoinColumn(name="user_id")
-	private User user;
+	@JoinColumn(name="createdBy")
+	private User reportCreatedBy;
 	
 	
 	/** Getters & Setters **/
@@ -65,14 +65,12 @@ public class DailyReport {
 		this.actualOutput = actualOutput;
 	}
 
-	public User getUser() {
-		return user;
+	public User getReportCreatedBy() {
+		return reportCreatedBy;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setReportCreatedBy(User reportCreatedBy) {
+		this.reportCreatedBy = reportCreatedBy;
 	}
-	
-	
 
 }

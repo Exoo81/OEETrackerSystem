@@ -23,6 +23,9 @@ public class UserDetails {
 	@Column (name="job_title")
 	private String jobTitle;
 	
+	@Column (name="email")
+	private String email;
+	
 	@OneToOne
 	@JoinColumn(name="user_id")
 	private User user;
@@ -68,6 +71,14 @@ public class UserDetails {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 	

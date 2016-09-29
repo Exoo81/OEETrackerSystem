@@ -5,5 +5,6 @@
 		<class>com.exoo.oee.entity.Role</class>
 		<class>com.exoo.oee.entity.User</class>
 		<class>com.exoo.oee.entity.UserDetails</class>
+		<class>com.exoo.oee.entity.ProductionLine</class>
 	</persistence-unit>
 </persistence>

@@ -1,6 +1,5 @@
 package com.exoo.oee.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -9,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.domain.Sort.Direction;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +15,6 @@ import com.exoo.oee.repository.DailyReportRepository;
 import com.exoo.oee.repository.RoleRepository;
 import com.exoo.oee.repository.UserRepository;
 import com.exoo.oee.entity.DailyReport;
-import com.exoo.oee.entity.Role;
 import com.exoo.oee.entity.User;
 
 @Service
@@ -42,7 +39,7 @@ public class UserService {
 		List<User> users = page.getContent();
 		
 		for(User user : users ){
-			List<DailyReport> dailyReportList  = dailyReportRepository.findByUser(user);
+			List<DailyReport> dailyReportList  = dailyReportRepository.findByReportCreatedBy(user);
 			user.setDailyReports(dailyReportList);
 		}
 		
@@ -73,13 +70,19 @@ public class UserService {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		user.setPassword(encoder.encode(user.getPassword()));
 		
-		List<Role> roles = new ArrayList<Role>();
+		/*List<Role> roles = new ArrayList<Role>();
 		roles.add(roleRepository.findByroleName("ROLE_OPERATOR"));
-		user.setRoles(roles);
+		user.setRoles(roles);*/
 		
 		
 		userRepository.save(user);
 		
+	}
+
+	public Object getOne(String name) {
+		User user = userRepository.findByUsername(name);
+		//System.out.println(user.getUsername());
+		return user;
 	}
 	
 	

@@ -9,8 +9,8 @@
 		</definition>
 		
 		<definition name="index" extends="common">
-			<put-attribute name="title" value="Welcome Page" />
-			<put-attribute name="header" value="Welcome" />
+			<put-attribute name="title" value="Home" />
+			<put-attribute name="header" value="Home" />
 			<put-attribute name="body" value="/WEB-INF/jsp/index.jsp" />
 			<put-attribute name="activePage" value="index" />
 		</definition>
@@ -32,7 +32,7 @@
 		<definition name="user_details" extends="common">
 			<put-attribute name="title" value="User Details Page" />
 			<put-attribute name="header" value="User Details " />
-			<put-attribute name="body" value="/WEB-INF/jsp/user-details.jsp"></put-attribute>
+			<put-attribute name="body" value="/WEB-INF/jsp/user_details.jsp"></put-attribute>
 			<put-attribute name="activePage" value=" " />
 		</definition>
 		
@@ -56,6 +56,20 @@
 			<put-attribute name="body" value="/WEB-INF/jsp/login.jsp"></put-attribute>
 			<put-attribute name="activePage" value="login" />
 		</definition>
+		
+		<definition name="production_lines" extends="common">
+			<put-attribute name="title" value="Production Lines List" />
+			<put-attribute name="header" value="Production Lines List" />
+			<put-attribute name="body" value="/WEB-INF/jsp/production_lines.jsp"></put-attribute>
+			<put-attribute name="activePage" value="productionLinesList" />
+		</definition>
+		
+		<!-- <definition name="success_register" extends="common">
+			<put-attribute name="title" value="vvv" />
+			<put-attribute name="header" value="xcvcxv" />
+			<put-attribute name="body" value="/WEB-INF/jsp/success_register.jsp"></put-attribute>
+			<put-attribute name="activePage" value="productionLinesList" />
+		</definition> -->
 				
 		
 	</tiles-definitions>

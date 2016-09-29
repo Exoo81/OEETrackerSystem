@@ -22,7 +22,9 @@ public class Role {
 	@ManyToMany(mappedBy="roles")
 	private List<User> users;
 	
-
+	
+    
+    
 	/** Getters & Setters **/
 
 	public Integer getId() {
