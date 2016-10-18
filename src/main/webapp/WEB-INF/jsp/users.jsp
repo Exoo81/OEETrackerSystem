@@ -7,12 +7,30 @@
 <c:url var="prevUrl" value="/${currentIndex - 1}/users.html" />
 <c:url var="nextUrl" value="/${currentIndex + 1}/users.html" />
 
+<script type="text/javascript">
+
+	$(document).ready(function(){		
+		$('.triggerRemove').click(function(e){
+				e.preventDefault();
+				$('#modalRemoveInfo .removeBtn').attr("href", $(this).attr("href"));
+				$('#modalRemoveInfo').modal();
+		});		
+	});
+
+</script>
+
+
+<c:if test="${param.delete eq true}">
+			<div class="alert alert-success">Deleting successful !</div>
+</c:if>
+
 <table class="table table-bordered table-hover table-oee">
 	<thead>
 	  <tr class="info">
 	     <th class="td-oee-h id-oee">Id</th>
 	     <th class="td-oee-h">Username</th>
 	     <th class="td-oee-h dr-oee">Daily Reports</th>
+	     <th class="td-oee-h">Remove</th>
 	  </tr>
 	</thead>
 
@@ -29,9 +47,13 @@
 				</a>
 				</c:when>
 				</c:choose>
-				<%-- <a class="btn btn-danger" href='<spring:url value="/user/${user.id}/reports.html" />'>
-  					<i class="fa fa-file-text-o" title="Daily reports list" aria-hidden="true"></i>
-				</a> --%>
+			<security:authorize access="hasRole('ROLE_ADMIN')">
+				<td class="td-oee dr-oee">
+					<a class="btn btn-danger triggerRemove" href="<spring:url value="/user/remove/${user.id}.html" />">
+						<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>&nbsp;Remove
+					</a>
+				</td>
+			</security:authorize>
 			</td>
 		</tr>
 		</c:forEach>
@@ -82,3 +104,22 @@
 		</ul>
 	</center>
 </c:if>
+
+<!-- Modal -->
+<div class="modal fade" id="modalRemoveInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Remove User</h4>
+      </div>
+      <div class="modal-body">
+        Really remove ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <a href="" class="btn btn-danger removeBtn">Remove</a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -2,6 +2,7 @@ package com.exoo.oee.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,7 +35,7 @@ public class User {
 	@OneToMany(mappedBy="reportCreatedBy")
 	private List<DailyReport> dailyReports;
 	
-	@OneToOne (mappedBy="user")
+	@OneToOne (mappedBy="user", cascade=CascadeType.REMOVE)
 	private UserDetails userDetails;
 	
 	@OneToMany(mappedBy="productionLineCreatedBy")

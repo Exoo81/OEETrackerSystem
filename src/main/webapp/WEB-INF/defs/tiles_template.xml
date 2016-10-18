@@ -17,7 +17,7 @@
 		
 		<definition name="dailyReport" extends="common">
 			<put-attribute name="title" value="Daily Report Page" />
-			<put-attribute name="header" value="Daily Report form" />
+			<put-attribute name="header" value="Daily Report" />
 			<put-attribute name="body" value="/WEB-INF/jsp/dailyReport.jsp"></put-attribute>
 			<put-attribute name="activePage" value="dailyReport" />
 		</definition>
@@ -63,13 +63,6 @@
 			<put-attribute name="body" value="/WEB-INF/jsp/production_lines.jsp"></put-attribute>
 			<put-attribute name="activePage" value="productionLinesList" />
 		</definition>
-		
-		<!-- <definition name="success_register" extends="common">
-			<put-attribute name="title" value="vvv" />
-			<put-attribute name="header" value="xcvcxv" />
-			<put-attribute name="body" value="/WEB-INF/jsp/success_register.jsp"></put-attribute>
-			<put-attribute name="activePage" value="productionLinesList" />
-		</definition> -->
 				
 		
 	</tiles-definitions>

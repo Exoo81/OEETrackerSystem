@@ -17,6 +17,7 @@
 		<intercept-url pattern="/account**" access="isAuthenticated()" />
 		<intercept-url pattern="/*/production_lines**" access="isAuthenticated()" />
 		<intercept-url pattern="/productionLine/remove/**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/user/remove/**" access="hasRole('ROLE_ADMIN')" />
 		<form-login login-page="/login.html" />
 		<logout logout-url="/logout" />
 		<csrf disabled="true" />

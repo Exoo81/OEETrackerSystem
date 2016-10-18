@@ -108,6 +108,11 @@ public class UserService {
 		//System.out.println(user.getUsername());
 		return user;
 	}
+
+	public void delete(Integer id) {
+		userRepository.delete(id);
+		
+	}
 	
 	
 	

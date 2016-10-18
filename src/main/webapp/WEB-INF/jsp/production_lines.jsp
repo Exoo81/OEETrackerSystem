@@ -2,6 +2,18 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../template/taglibs.jsp" %>
 
+<script type="text/javascript">
+
+	$(document).ready(function(){		
+		$('.triggerRemove').click(function(e){
+				e.preventDefault();
+				$('#modalRemoveInfo .removeBtn').attr("href", $(this).attr("href"));
+				$('#modalRemoveInfo').modal();
+		});		
+	});
+
+</script>
+
 <c:url var="firstUrl" value="/1/production_lines.html" />
 <c:url var="lastUrl" value="/${deploymentProductionLines.totalPages}/production_lines.html" />
 <c:url var="prevUrl" value="/${currentIndex - 1}/production_lines.html" />
@@ -41,7 +53,11 @@
 			<td class="td-oee">${productionLine.name}</td>
 			<td class="td-oee">${productionLine.productionLineCreatedBy.username}</td>
 			<security:authorize access="hasRole('ROLE_ADMIN')">
-				<td class="td-oee dr-oee"><a class="btn btn-danger" href="<spring:url value="/productionLine/remove/${productionLine.id}.html" />">Remove</a></td>
+				<td class="td-oee dr-oee">
+					<a class="btn btn-danger triggerRemove" href="<spring:url value="/productionLine/remove/${productionLine.id}.html" />">
+						<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>&nbsp;Remove
+					</a>
+				</td>
 			</security:authorize>
 		</tr>
 		</c:forEach>
@@ -125,3 +141,22 @@
 		</div>
 	</div>
 </form:form>
+
+<!-- Modal -->
+<div class="modal fade" id="modalRemoveInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Remove Production Line</h4>
+      </div>
+      <div class="modal-body">
+        Really remove ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <a href="" class="btn btn-danger removeBtn">Remove</a>
+      </div>
+    </div>
+  </div>
+</div>

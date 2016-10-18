@@ -30,13 +30,6 @@ public class UserController {
 	@Autowired
 	private RoleService roleService;
 	
-	/*@ModelAttribute("user")
-	public User userInitializer(){
-		User user = new User();
-		user.setRoles(new ArrayList<Role>());
-		return user;
-	}*/
-	
 	@ModelAttribute("rolesList")
 	public List<Role> rolesListInitializer(){
 		List<Role> roles = new ArrayList<Role>();
@@ -77,53 +70,25 @@ public class UserController {
 		return "user_details";
 	}
 	
-	/*@RequestMapping("/user/{id}/reports")
-	public String getUserReport(Model model, @PathVariable int id){
-		model.addAttribute("userWoW", userService.getOneWithReports(id));
-		return "user_report_list";
-	}*/
-	
 	@RequestMapping("/register")
 	public String showRegister(){
-		
 		return "user_register";
 	}
 	
 	
 	
 	@RequestMapping(value="/register", method=RequestMethod.POST)
-	public String doRegister(@ModelAttribute ("userRegistrationForm")UserRegistrationWrapper newUser, BindingResult result){
-		
-		/*System.out.println("start");
-		
-		System.out.println("username: " + newUser.getUsername());
-		System.out.println("password: " + newUser.getPassword());
-		System.out.println("first name: " + newUser.getFirstName());
-		System.out.println("last name: " + newUser.getLastName());
-		System.out.println("job title: " + newUser.getJobTitle());
-		System.out.println("email: " + newUser.getEmail());
-		
-		System.out.println("ROLES:");
-		if(!(newUser.getRoleId().isEmpty())){
-			System.out.println("NOT empty");
-			for(Integer roleId : newUser.getRoleId()){
-				System.out.println(roleId);
-			}
-		}else{
-			System.out.println("empty");
-		}*/
-		
+	public String doRegister(@ModelAttribute ("userRegistrationForm")UserRegistrationWrapper newUser, BindingResult result){	
 		userService.save(newUser);
 		return "redirect:register.html?success=true";
 	}
 	
-	// example for fetch=FetchType.LAZY
-	/*@RequestMapping("/reports/{id}")
-	public String usersReports(Model model, @PathVariable int id){
-		model.addAttribute("usersWOW", userService.findOne(id));
-		return "user_report_list";
-	}*/
-	
+	@RequestMapping("/user/remove/{id}")
+	public String removeUser(@PathVariable Integer id){
+		userService.delete(id);
+		return "redirect:/1/users.html?delete=true";
+	}
+
 	@RequestMapping("/account")
 	public String account(Model model, Principal principal){
 		String name = principal.getName();
@@ -132,5 +97,6 @@ public class UserController {
 		model.addAttribute("userDetailsWoW", userService.getOne(name));
 		model.addAttribute("account", account);
 		return "user_details";
+		
 	}
 }
