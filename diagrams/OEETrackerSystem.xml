@@ -1,10 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-
-<entities>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><entities>
 	<entity>
 		<entity-name>com.exoo.oee.entity.User</entity-name>
 		<entity-width>151</entity-width>
-		<entity-height>246</entity-height>
+		<entity-height>266</entity-height>
 		<entity-X-Coordinate>286</entity-X-Coordinate>
 		<entity-Y-Coordinate>51</entity-Y-Coordinate>
 		<primary-collapsed>false</primary-collapsed>
@@ -16,8 +14,8 @@
 		<entity-name>com.exoo.oee.entity.UserDetails</entity-name>
 		<entity-width>141</entity-width>
 		<entity-height>206</entity-height>
-		<entity-X-Coordinate>10</entity-X-Coordinate>
-		<entity-Y-Coordinate>61</entity-Y-Coordinate>
+		<entity-X-Coordinate>17</entity-X-Coordinate>
+		<entity-Y-Coordinate>72</entity-Y-Coordinate>
 		<primary-collapsed>false</primary-collapsed>
 		<relation-collapsed>false</relation-collapsed>
 		<basic-collapsed>false</basic-collapsed>
@@ -25,10 +23,10 @@
 
 	<entity>
 		<entity-name>com.exoo.oee.entity.ProductionLine</entity-name>
-		<entity-width>120</entity-width>
-		<entity-height>146</entity-height>
-		<entity-X-Coordinate>580</entity-X-Coordinate>
-		<entity-Y-Coordinate>370</entity-Y-Coordinate>
+		<entity-width>198</entity-width>
+		<entity-height>166</entity-height>
+		<entity-X-Coordinate>640</entity-X-Coordinate>
+		<entity-Y-Coordinate>254</entity-Y-Coordinate>
 		<primary-collapsed>false</primary-collapsed>
 		<relation-collapsed>false</relation-collapsed>
 		<basic-collapsed>false</basic-collapsed>
@@ -38,8 +36,8 @@
 		<entity-name>com.exoo.oee.entity.DailyReport</entity-name>
 		<entity-width>151</entity-width>
 		<entity-height>186</entity-height>
-		<entity-X-Coordinate>590</entity-X-Coordinate>
-		<entity-Y-Coordinate>61</entity-Y-Coordinate>
+		<entity-X-Coordinate>640</entity-X-Coordinate>
+		<entity-Y-Coordinate>28</entity-Y-Coordinate>
 		<primary-collapsed>false</primary-collapsed>
 		<relation-collapsed>false</relation-collapsed>
 		<basic-collapsed>false</basic-collapsed>
@@ -49,8 +47,8 @@
 		<entity-name>com.exoo.oee.entity.Role</entity-name>
 		<entity-width>143</entity-width>
 		<entity-height>146</entity-height>
-		<entity-X-Coordinate>290</entity-X-Coordinate>
-		<entity-Y-Coordinate>319</entity-Y-Coordinate>
+		<entity-X-Coordinate>16</entity-X-Coordinate>
+		<entity-Y-Coordinate>299</entity-Y-Coordinate>
 		<primary-collapsed>false</primary-collapsed>
 		<relation-collapsed>false</relation-collapsed>
 		<basic-collapsed>false</basic-collapsed>

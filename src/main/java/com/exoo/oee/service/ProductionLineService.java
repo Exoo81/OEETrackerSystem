@@ -1,5 +1,8 @@
 package com.exoo.oee.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +12,11 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.exoo.oee.entity.ProductionLine;
+import com.exoo.oee.entity.Role;
 import com.exoo.oee.entity.User;
+import com.exoo.oee.entity.UserDetails;
 import com.exoo.oee.repository.ProductionLineRepository;
+import com.exoo.oee.repository.UserDetailsRepository;
 import com.exoo.oee.repository.UserRepository;
 
 @Service
@@ -23,12 +29,23 @@ public class ProductionLineService {
 	
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private UserDetailsRepository userDetailsRepository;
 
 	public Page<ProductionLine> findAll(Integer pageNumber) {
 		PageRequest request =
 	            new PageRequest(pageNumber - 1, 10, Sort.Direction.DESC, "id");
 		Page<ProductionLine> page = productionLineRepository.findAll(request);
 		
+		List<ProductionLine> prodLineList = page.getContent();
+		
+		for(ProductionLine pL : prodLineList){
+			/*User productionLineCreatedBy = userRepository.findByCreatedProductionLines(pL);
+			pL.setProductionLineCreatedBy(productionLineCreatedBy);*/
+			List<User> authorizedUsers = userRepository.findByAuthorizedProductionLines(pL);
+			pL.setAuthorizedUsers(authorizedUsers);
+		}
 		
 		return page;
 	}
@@ -44,5 +61,41 @@ public class ProductionLineService {
 		productionLineRepository.delete(id);
 		
 	}
+	
+	public ProductionLine findProductionLine(int productionLineID) {
+		
+		return productionLineRepository.findOne(productionLineID);
+	}
+
+	public List<User> findAllAuthorizedUsers(int productionLineID) {
+		
+		ProductionLine pL = productionLineRepository.findOne(productionLineID);
+		
+		List<User> users = userRepository.findByAuthorizedProductionLines(pL);
+		
+		for(User user : users){
+			UserDetails userDetails = userDetailsRepository.findByUser(user);
+			user.setUserDetails(userDetails);
+		}
+		
+		//System.out.println(users);
+		
+		return users;
+	}
+
+	public void deleteAuthorizedProductionLine(int idUser, int productionLineID) {
+		ProductionLine pl = productionLineRepository.findOne(productionLineID);
+		User user = userRepository.findOne(idUser);
+		
+		List<ProductionLine> authProductionLines = user.getAuthorizedProductionLines();
+		
+		authProductionLines.remove(pl);
+		
+		user.setAuthorizedProductionLines(authProductionLines);
+		
+		userRepository.save(user);
+		
+	}
+
 
 }

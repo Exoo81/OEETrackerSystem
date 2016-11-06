@@ -2,31 +2,23 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../template/taglibs.jsp" %>
 
-<script type="text/javascript">
-
-	$(document).ready(function(){		
-		$('.triggerRemove').click(function(e){
-				e.preventDefault();
-				$('#modalRemoveInfo .removeBtn').attr("href", $(this).attr("href"));
-				$('#modalRemoveInfo').modal();
-		});		
-	});
-
-</script>
 
 <c:url var="firstUrl" value="/1/production_lines.html" />
 <c:url var="lastUrl" value="/${deploymentProductionLines.totalPages}/production_lines.html" />
 <c:url var="prevUrl" value="/${currentIndex - 1}/production_lines.html" />
 <c:url var="nextUrl" value="/${currentIndex + 1}/production_lines.html" />
 
+
+sortowanie tabeli szukanie po .....<br>
+
 <c:if test="${param.success eq true}">
 		<div class="alert alert-success">New Production Line created !</div>
 </c:if>
 
 <security:authorize access="hasRole('ROLE_ADMIN')">
-	<!-- Button trigger modal -->
+	<!-- Button trigger modal add line -->
 	<button type="button" class="btn btn-success btn-sm"
-		data-toggle="modal" data-target="#myModal">
+		data-toggle="modal" data-target="#newProductionLineModal">
 		<i class="fa fa-plus" aria-hidden="true"></i> &nbsp;Add Production
 		Line
 	</button>
@@ -40,8 +32,9 @@
 	     <th class="td-oee-h id-oee">Id</th>
 	     <th class="td-oee-h">Line name</th>
 	     <th class="td-oee-h">Created by</th>
+	     <th class="td-oee-h">Authorized users</th>
 	     <security:authorize access="hasRole('ROLE_ADMIN')"> 
-	     	<th class="td-oee-h">Remove</th>
+	     	<th class="td-oee-h">Production line options</th>
 	     </security:authorize>
 	  </tr>
 	</thead>
@@ -51,10 +44,19 @@
 		<tr>
 			<td class="td-oee">${productionLine.id}</td>
 			<td class="td-oee">${productionLine.name}</td>
-			<td class="td-oee">${productionLine.productionLineCreatedBy.username}</td>
+			<td class="td-oee"><a href='<spring:url value="/production_lines/user/${productionLine.productionLineCreatedBy.id}.html" />'>${productionLine.productionLineCreatedBy.username}</a></td>
+			<td class="td-oee">
+				<c:choose>
+					<c:when test="${not empty productionLine.authorizedUsers}">
+						<a class="btn btn-success" href='<spring:url value="/production_lines/users/${productionLine.id}.html" />'>
+		  					<i class="fa fa-file-text-o" title="Authorized Users List" aria-hidden="true"></i>
+						</a>
+					</c:when>
+				</c:choose>
+			</td>
 			<security:authorize access="hasRole('ROLE_ADMIN')">
 				<td class="td-oee dr-oee">
-					<a class="btn btn-danger triggerRemove" href="<spring:url value="/productionLine/remove/${productionLine.id}.html" />">
+					<a class="btn btn-danger triggerRemove" href="<spring:url value="/production_lines/remove/${productionLine.id}.html" />">
 						<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>&nbsp;Remove
 					</a>
 				</td>
@@ -110,9 +112,9 @@
 	</center>
 </c:if>
 
-<!-- Modal -->
+<!-- Modal Add production line -->
 <form:form commandName="productionLine" cssClass="form-horizontal">
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+	<div class="modal fade" id="newProductionLineModal" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
@@ -142,7 +144,7 @@
 	</div>
 </form:form>
 
-<!-- Modal -->
+<!-- Modal remove production line -->
 <div class="modal fade" id="modalRemoveInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

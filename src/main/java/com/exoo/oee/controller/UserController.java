@@ -64,12 +64,6 @@ public class UserController {
 		return "users";
 	}
 	
-	@RequestMapping("/users/{id}")
-	public String getUserDetailsByUserId(Model model, @PathVariable int id){
-		model.addAttribute("userDetailsWoW", userService.getOne(id));
-		return "user_details";
-	}
-	
 	@RequestMapping("/register")
 	public String showRegister(){
 		return "user_register";
@@ -92,11 +86,35 @@ public class UserController {
 	@RequestMapping("/account")
 	public String account(Model model, Principal principal){
 		String name = principal.getName();
-		String account = "account";
+		String parentLink = "account";
 		//System.out.println(name);
 		model.addAttribute("userDetailsWoW", userService.getOne(name));
-		model.addAttribute("account", account);
+		model.addAttribute("parentLink", parentLink);
 		return "user_details";
 		
+	}
+	
+	@RequestMapping("/users/user/{id}")
+	public String getUserDetailsByUserIdUsers(Model model, @PathVariable int id){
+		String parentLink = "users";
+		model.addAttribute("userDetailsWoW", userService.getOne(id));
+		model.addAttribute("parentLink", parentLink);
+		return "user_details";
+	}
+	
+	@RequestMapping("/dailyReport/user/{id}")
+	public String getUserDetailsByUserIdDailyReport(Model model, @PathVariable int id){
+		String parentLink = "dailyReport";
+		model.addAttribute("userDetailsWoW", userService.getOne(id));
+		model.addAttribute("parentLink", parentLink);
+		return "user_details";
+	}
+	
+	@RequestMapping("/production_lines/user/{id}")
+	public String getUserDetailsByUserIdProdLine(Model model, @PathVariable int id){
+		String parentLink = "productionLine";
+		model.addAttribute("userDetailsWoW", userService.getOne(id));
+		model.addAttribute("parentLink", parentLink);
+		return "user_details";
 	}
 }

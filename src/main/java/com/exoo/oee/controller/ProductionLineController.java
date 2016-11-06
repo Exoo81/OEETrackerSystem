@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.exoo.oee.entity.ProductionLine;
+import com.exoo.oee.entity.User;
+import com.exoo.oee.entity.UserDetails;
 import com.exoo.oee.service.ProductionLineService;
 
 @Controller
@@ -56,12 +58,33 @@ public class ProductionLineController {
 		return "redirect:/1/production_lines.html?success=true";
 	}
 	
-	@RequestMapping("/productionLine/remove/{id}")
+	@RequestMapping("/production_lines/remove/{id}")
 	public String removeProductionLine(@PathVariable int id){
 		productionLineService.delete(id);
 		return "redirect:/1/production_lines.html";
 		
 	}
 	
+	@RequestMapping("/production_lines/users/{productionLineID}")
+	public String findAllAuthorizedUsersByProductionLineID(Model model, @PathVariable int productionLineID){
+		
+		ProductionLine pL = productionLineService.findProductionLine(productionLineID);
+		List<User> authorizedUsers = productionLineService.findAllAuthorizedUsers(productionLineID);
+		String parentLink = "productionLine";
+		
+		model.addAttribute("productionLine", pL);
+		model.addAttribute("authUsersWoW", authorizedUsers);
+		model.addAttribute("parentLink", parentLink);
+		
+		return "authorized_users";
+		
+	}
+	
+	@RequestMapping("/production_lines/remove/user/{idUser}/{productionLineID}")
+	public String removeAuthorizedUser(@PathVariable int idUser, @PathVariable int productionLineID){
+		productionLineService.deleteAuthorizedProductionLine(idUser, productionLineID);
+		return "redirect:/production_lines/users/{productionLineID}.html?removeFromList=true";
+		
+	}
 	
 }

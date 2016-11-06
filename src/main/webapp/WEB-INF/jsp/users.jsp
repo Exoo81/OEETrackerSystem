@@ -7,17 +7,6 @@
 <c:url var="prevUrl" value="/${currentIndex - 1}/users.html" />
 <c:url var="nextUrl" value="/${currentIndex + 1}/users.html" />
 
-<script type="text/javascript">
-
-	$(document).ready(function(){		
-		$('.triggerRemove').click(function(e){
-				e.preventDefault();
-				$('#modalRemoveInfo .removeBtn').attr("href", $(this).attr("href"));
-				$('#modalRemoveInfo').modal();
-		});		
-	});
-
-</script>
 
 
 <c:if test="${param.delete eq true}">
@@ -30,7 +19,7 @@
 	     <th class="td-oee-h id-oee">Id</th>
 	     <th class="td-oee-h">Username</th>
 	     <th class="td-oee-h dr-oee">Daily Reports</th>
-	     <th class="td-oee-h">Remove</th>
+	     <th class="td-oee-h">Options</th>
 	  </tr>
 	</thead>
 
@@ -38,23 +27,24 @@
 		<c:forEach items="${usersWoW}" var="user">
 		<tr>
 			<td class="td-oee">${user.id}</td>
-			<td class="td-oee"><a href='<spring:url value="/users/${user.id}.html" />'>${user.username}</a></td>
+			<td class="td-oee"><a href='<spring:url value="/users/user/${user.id}.html" />'>${user.username}</a></td>
 			<td class="td-oee">
 				<c:choose>
 					<c:when test="${not empty user.dailyReports}">
-				<a class="btn btn-success" href='<spring:url value="/user/${user.id}/1/reports.html" />'>
-  					<i class="fa fa-file-text-o" title="Daily reports list" aria-hidden="true"></i>
-				</a>
+						<a class="btn btn-success" href='<spring:url value="/user/${user.id}/1/reports.html" />'>
+		  					<i class="fa fa-file-text-o" title="Daily reports list" aria-hidden="true"></i>
+						</a>
 				</c:when>
 				</c:choose>
-			<security:authorize access="hasRole('ROLE_ADMIN')">
-				<td class="td-oee dr-oee">
-					<a class="btn btn-danger triggerRemove" href="<spring:url value="/user/remove/${user.id}.html" />">
-						<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>&nbsp;Remove
-					</a>
-				</td>
-			</security:authorize>
 			</td>
+				<security:authorize access="hasRole('ROLE_ADMIN')">
+					<td class="td-oee dr-oee">
+						<a class="btn btn-danger triggerRemove" href="<spring:url value="/user/remove/${user.id}.html" />">
+							<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+						</a>
+					</td>
+				</security:authorize>
+			
 		</tr>
 		</c:forEach>
 	</tbody>
@@ -105,7 +95,7 @@
 	</center>
 </c:if>
 
-<!-- Modal -->
+<!-- Modal Remove -->
 <div class="modal fade" id="modalRemoveInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

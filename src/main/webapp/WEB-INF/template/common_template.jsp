@@ -9,11 +9,15 @@
 <html>
 	<head>
 		<!-- JQuery -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<!-- minified JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 		
+		<!-- Resources -->
 		<spring:url value="/resources/css/style.css" var="styleCSS" />
+		<spring:url value="/resources/js/tooltip.js" var="tooltipJS" />
+		<spring:url value="/resources/js/triggerRemove.js" var="triggerRemove" />
+		
 		<!-- minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 		<!-- Custom CSS style -->
@@ -24,6 +28,10 @@
 		<script src="https://use.fontawesome.com/969da422e1.js"></script>
 		<!-- Fonts -->
 		<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+		
+		<!-- JS -->
+		<script src="${tooltipJS}"></script>
+		<script src="${triggerRemove}"></script>
 		
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title><tiles:getAsString name="title" /></title>
@@ -75,7 +83,7 @@
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
 	            <li class="${activePage == 'index' ? 'active' : ''}"><a href='<spring:url value="/index.html" />'>Home </a></li>
-	            <li class="${activePage == 'dailyReport' ? 'active' : ''}"><a href='<spring:url value="/dailyReport.html" />'>Daily Report</a></li>
+	            <li class="${activePage == 'dailyReport' ? 'active' : ''}"><a href='<spring:url value="/1/dailyReport.html" />'>Daily Report</a></li>
 	            <security:authorize access="hasRole('ROLE_ADMIN')">
 	            	<li class="${activePage == 'users' ? 'active' : ''}"><a href='<spring:url value="/1/users.html" />'>Users</a></li>
 	            </security:authorize>
@@ -97,6 +105,14 @@
 			<tiles:insertAttribute name="footer"/>
 		</center>
     </div>
+    
+    <!-- do osobnego pliku -->
+    <!-- <script type="text/javascript">
+		$('document').ready(function(){
+			$('[data-toggle="tooltip"]').tooltip();
+		});
+	</script> -->
+    
 
 	</body>
 </html>

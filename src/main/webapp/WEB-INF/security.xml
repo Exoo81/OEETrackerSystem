@@ -8,16 +8,17 @@
 
 	<http>
 		<!-- <intercept-url pattern="/login**" access="! isAuthenticated()" />  -->
-		<intercept-url pattern="/index**" access="isAuthenticated()" />
-		<intercept-url pattern="/dailyReport**" access="isAuthenticated()" />
 		<intercept-url pattern="/login**" access="! isAuthenticated()" />
+		<intercept-url pattern="/index**" access="isAuthenticated()" />
+		<!-- <intercept-url pattern="/dailyReport**" access="isAuthenticated()" /> -->
 		<intercept-url pattern="/*/users**" access="hasRole('ROLE_ADMIN')" /> 
-		<intercept-url pattern="/users/**" access="hasRole('ROLE_ADMIN')" /> 
+		<intercept-url pattern="/user/remove/**" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/register**" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/account**" access="isAuthenticated()" />
 		<intercept-url pattern="/*/production_lines**" access="isAuthenticated()" />
-		<intercept-url pattern="/productionLine/remove/**" access="hasRole('ROLE_ADMIN')" />
-		<intercept-url pattern="/user/remove/**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/production_lines/remove/**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/*/dailyReport**" access="isAuthenticated()" />
+		<intercept-url pattern="/dailyReport/remove/**" access="hasRole('ROLE_ADMIN')" />
 		<form-login login-page="/login.html" />
 		<logout logout-url="/logout" />
 		<csrf disabled="true" />

@@ -63,6 +63,13 @@
 			<put-attribute name="body" value="/WEB-INF/jsp/production_lines.jsp"></put-attribute>
 			<put-attribute name="activePage" value="productionLinesList" />
 		</definition>
+		
+		<definition name="authorized_users" extends="common">
+			<put-attribute name="title" value="Authorized Users List" />
+			<put-attribute name="header" value="Authorized Users List" />
+			<put-attribute name="body" value="/WEB-INF/jsp/authorized_users.jsp"></put-attribute>
+			<put-attribute name="activePage" value="productionLinesList" />
+		</definition>
 				
 		
 	</tiles-definitions>

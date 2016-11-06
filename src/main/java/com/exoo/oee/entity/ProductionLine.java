@@ -1,11 +1,14 @@
 package com.exoo.oee.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -22,6 +25,9 @@ public class ProductionLine {
 	@ManyToOne
 	@JoinColumn(name="createdBy")
 	private User productionLineCreatedBy;
+	
+	@ManyToMany(mappedBy="authorizedProductionLines")
+	private List<User> authorizedUsers;
 	
 
 	public Integer getId() {
@@ -48,6 +54,24 @@ public class ProductionLine {
 		this.productionLineCreatedBy = productionLineCreatedBy;
 	}
 
+	public List<User> getAuthorizedUsers() {
+		return authorizedUsers;
+	}
+
+	public void setAuthorizedUsers(List<User> authorizedUsers) {
+		this.authorizedUsers = authorizedUsers;
+	}
+
+	@Override
+	public String toString() {
+		return "ProductionLine [id=" + id + ", name=" + name
+				+ ", productionLineCreatedBy=" + productionLineCreatedBy
+				+ ", authorizedUsers=" + authorizedUsers + "]";
+	}
+
+	
+
+	
 	
 
 }

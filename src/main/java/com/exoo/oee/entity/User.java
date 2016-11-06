@@ -41,9 +41,13 @@ public class User {
 	@OneToMany(mappedBy="productionLineCreatedBy")
 	private List<ProductionLine> createdProductionLines;
 	
+	@ManyToMany
+	@JoinTable
+	private List<ProductionLine> authorizedProductionLines;
+
 	
 	/** Getters & Setters **/
-
+	
 	public Integer getId() {
 		return id;
 	}
@@ -66,6 +70,14 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 
 	public List<Role> getRoles() {
@@ -92,14 +104,6 @@ public class User {
 		this.userDetails = userDetails;
 	}
 
-	public boolean isEnabled() {
-		return enabled;
-	}
-
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
-	}
-
 	public List<ProductionLine> getCreatedProductionLines() {
 		return createdProductionLines;
 	}
@@ -109,13 +113,20 @@ public class User {
 		this.createdProductionLines = createdProductionLines;
 	}
 
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password="
-				+ password + ", enabled=" + enabled + ", roles=" + roles
-				+ ", userDetails=" + userDetails + "]";
+	public List<ProductionLine> getAuthorizedProductionLines() {
+		return authorizedProductionLines;
 	}
 
+	public void setAuthorizedProductionLines(
+			List<ProductionLine> authorizedProductionLines) {
+		this.authorizedProductionLines = authorizedProductionLines;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", userDetails="
+				+ userDetails + "]";
+	}
 	
 
 

@@ -73,4 +73,15 @@ public class DailyReport {
 		this.reportCreatedBy = reportCreatedBy;
 	}
 
+	@Override
+	public String toString() {
+		return "DailyReport [id=" + id + ", shift=" + shift + ", dateOfReport="
+				+ dateOfReport + ", actualOutput=" + actualOutput
+				+ ", reportCreatedBy=" + reportCreatedBy.getUsername() + "]";
+	}
+
+	
+	
+	
+
 }

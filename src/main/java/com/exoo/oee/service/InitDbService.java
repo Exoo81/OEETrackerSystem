@@ -14,10 +14,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.exoo.oee.entity.DailyReport;
+import com.exoo.oee.entity.ProductionLine;
 import com.exoo.oee.entity.Role;
 import com.exoo.oee.entity.User;
 import com.exoo.oee.entity.UserDetails;
 import com.exoo.oee.repository.DailyReportRepository;
+import com.exoo.oee.repository.ProductionLineRepository;
 import com.exoo.oee.repository.RoleRepository;
 import com.exoo.oee.repository.UserDetailsRepository;
 import com.exoo.oee.repository.UserRepository;
@@ -40,10 +42,18 @@ public class InitDbService {
 	@Autowired
 	private UserDetailsRepository userDetailsRepository;
 	
+	@Autowired
+	private ProductionLineRepository productionLineRepository;
+	
 	@PostConstruct
 	public void init(){
+		//fillDB();
+	}
+	
+	
+	public void fillDB(){
 		
-		/*SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy HH:mm:ss"); 
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy HH:mm:ss"); 
 		
 		Role adminRole = new Role();
 		adminRole.setRoleName("ROLE_ADMIN");
@@ -57,18 +67,35 @@ public class InitDbService {
 		analystRole.setRoleName("ROLE_ANALYST");
 		roleRepository.save(analystRole);
 		
+		//Production Line
+		ProductionLine pL1= new ProductionLine();
+		pL1.setName("Fiber Lasers");
+		productionLineRepository.save(pL1);
+		ProductionLine pL2= new ProductionLine();
+		pL2.setName("Cannon");
+		productionLineRepository.save(pL2);
+
 		User masterUser = new User();
 		masterUser.setEnabled(true);
 		masterUser.setUsername("exoo");
 		//masterUser.setPassword("klocek12");
 			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		masterUser.setPassword(encoder.encode("klocek12"));
+		
 		List<Role> rolesMaster = new ArrayList<Role>();
 		rolesMaster.add(userRole);
 		rolesMaster.add(adminRole);
 		rolesMaster.add(analystRole);
 		masterUser.setRoles(rolesMaster);
+		
 		userRepository.save(masterUser);
+		
+		//line created by
+		pL1.setProductionLineCreatedBy(masterUser);
+		pL2.setProductionLineCreatedBy(masterUser);
+		productionLineRepository.save(pL1);
+		productionLineRepository.save(pL2);
+
 		
 			// masetrUser - UserDetails 
 			UserDetails masterUserDet = new UserDetails();
@@ -77,15 +104,24 @@ public class InitDbService {
 			masterUserDet.setJobTitle("System Administrator");
 			masterUserDet.setUser(masterUser);
 			userDetailsRepository.save(masterUserDet);
+			
 		
 		User operatorUser1 = new User();
 		operatorUser1.setEnabled(true);
 		operatorUser1.setUsername("operator1");
 		//operatorUser1.setPassword("operator1");
 		operatorUser1.setPassword(encoder.encode("operator1"));
+		
 		List<Role> rolesOperator1 = new ArrayList<Role>();
 		rolesOperator1.add(userRole);
 		operatorUser1.setRoles(rolesOperator1);	
+		
+		//autho
+		List<ProductionLine> pLinesOperatorUser1 = new ArrayList<ProductionLine>();
+		pLinesOperatorUser1.add(pL1);
+		pLinesOperatorUser1.add(pL2);
+		operatorUser1.setAuthorizedProductionLines(pLinesOperatorUser1);
+		
 		userRepository.save(operatorUser1);
 		
 			// operatorUser1 - UserDetails
@@ -147,9 +183,15 @@ public class InitDbService {
 		operatorUser2.setUsername("operator2");
 		//operatorUser2.setPassword("operator2");
 		operatorUser2.setPassword(encoder.encode("operator2"));
+		
 		List<Role> rolesOperator2 = new ArrayList<Role>();
 		rolesOperator2.add(userRole);
 		operatorUser2.setRoles(rolesOperator2);
+		
+		List<ProductionLine> pLinesOperatorUser2 = new ArrayList<ProductionLine>();
+		pLinesOperatorUser2.add(pL1);
+		operatorUser2.setAuthorizedProductionLines(pLinesOperatorUser2);
+		
 		userRepository.save(operatorUser2);
 		
 			// operatorUser2 - UserDetails
@@ -212,9 +254,15 @@ public class InitDbService {
 		operatorUser3.setUsername("operator3");
 		//operatorUser3.setPassword("operator3");
 		operatorUser3.setPassword(encoder.encode("operator3"));
+		
 		List<Role> rolesOperator3 = new ArrayList<Role>();
 		rolesOperator3.add(userRole);
 		operatorUser3.setRoles(rolesOperator3);
+		
+		List<ProductionLine> pLinesOperatorUser3 = new ArrayList<ProductionLine>();
+		pLinesOperatorUser3.add(pL2);
+		operatorUser3.setAuthorizedProductionLines(pLinesOperatorUser3);
+		
 		userRepository.save(operatorUser3);
 		
 			// operatorUser3 - UserDetails
@@ -287,7 +335,7 @@ public class InitDbService {
 			analystUser1Det.setLastName("Jolie");
 			analystUser1Det.setJobTitle("Data analysis specialist");
 			analystUser1Det.setUser(analystUser1);
-			userDetailsRepository.save(analystUser1Det);*/
+			userDetailsRepository.save(analystUser1Det);
 		
 	
 	}

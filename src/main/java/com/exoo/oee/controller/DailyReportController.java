@@ -1,5 +1,8 @@
 package com.exoo.oee.controller;
 
+import java.security.Principal;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -45,4 +48,43 @@ public class DailyReportController {
 
 	    return "user_report_list";
 	}
+	
+	@RequestMapping(value = "/{pageNumber}/dailyReport")
+	public String reports(Model model, @PathVariable Integer pageNumber){
+		
+		Page<DailyReport> page = dailyReportService.findAll(pageNumber);
+		
+		int current = page.getNumber() + 1;
+	    int begin = Math.max(1, current - 5);
+	    int end = Math.min(begin + 10, page.getTotalPages());
+	    
+	    List<DailyReport> dailyReports = page.getContent();
+	    
+	    model.addAttribute("deploymentDailyReports", page);
+	    model.addAttribute("beginIndex", begin);
+	    model.addAttribute("endIndex", end);
+	    model.addAttribute("currentIndex", current);
+	    model.addAttribute("dailyReportWoW", dailyReports); // add by me
+		
+		return "dailyReport";
+	}
+	
+	@RequestMapping("/dailyReport/remove/{reportId}")
+	public String removeReportByAdmin(@PathVariable int reportId){
+		dailyReportService.delete(reportId);
+		return "redirect:/1/dailyReport.html?delete=true";
+	}
+	
+	@RequestMapping("/dailyReport/{userName}/remove/{reportId}")
+	public String removeReportByUser(@PathVariable int reportId, Principal principal){
+		
+		String userLogged = principal.getName();
+		if(dailyReportService.checkOwner(userLogged, reportId)){
+			dailyReportService.delete(reportId);
+			return "redirect:/1/dailyReport.html?delete=true";
+		}else{
+			return "redirect:/1/dailyReport.html?delete=false";
+		}
+	}
+	
 }
