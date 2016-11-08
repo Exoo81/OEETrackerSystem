@@ -65,10 +65,32 @@ public class ProductionLineController {
 		
 	}
 	
-	@RequestMapping("/production_lines/users/{productionLineID}")
-	public String findAllAuthorizedUsersByProductionLineID(Model model, @PathVariable int productionLineID){
+	@RequestMapping("/{pageNumber}/production_lines/users/{productionLineID}")
+	public String findAllAuthorizedUsersByProductionLineID(Model model, @PathVariable int productionLineID, @PathVariable Integer pageNumber){
 		
+		String parentLink = "productionLine";
 		ProductionLine pL = productionLineService.findProductionLine(productionLineID);
+		
+		Page<User> authorizedUsersPages = productionLineService.findAllAuthorizedUsers(productionLineID, pageNumber);
+		
+		int current = authorizedUsersPages.getNumber() + 1;
+	    int begin = Math.max(1, current - 5);
+	    int end = Math.min(begin + 10, authorizedUsersPages.getTotalPages());
+		
+	    List<User> authorizedUsersList = authorizedUsersPages.getContent();
+	    
+	    model.addAttribute("deploymentAuthorizedUsersPages", authorizedUsersPages);
+	    model.addAttribute("beginIndex", begin);
+	    model.addAttribute("endIndex", end);
+	    model.addAttribute("currentIndex", current);
+	    model.addAttribute("authorizedUsersListWoW", authorizedUsersList);
+	    
+	    model.addAttribute("productionLine", pL);
+	    model.addAttribute("parentLink", parentLink);
+	    
+	    return "authorized_users";
+	    
+		/*ProductionLine pL = productionLineService.findProductionLine(productionLineID);
 		List<User> authorizedUsers = productionLineService.findAllAuthorizedUsers(productionLineID);
 		String parentLink = "productionLine";
 		
@@ -76,7 +98,26 @@ public class ProductionLineController {
 		model.addAttribute("authUsersWoW", authorizedUsers);
 		model.addAttribute("parentLink", parentLink);
 		
-		return "authorized_users";
+		return "authorized_users";*/
+		
+		/*##########################################*/
+		
+		/*Page<ProductionLine> productionLineList = productionLineService.findAll(pageNumber);
+		
+		int current = productionLineList.getNumber() + 1;
+	    int begin = Math.max(1, current - 5);
+	    int end = Math.min(begin + 10, productionLineList.getTotalPages());
+		
+	    List<ProductionLine> productionLinesList = productionLineList.getContent();
+	    
+	    model.addAttribute("deploymentProductionLines", productionLineList);
+	    model.addAttribute("beginIndex", begin);
+	    model.addAttribute("endIndex", end);
+	    model.addAttribute("currentIndex", current);
+	    model.addAttribute("productionLinesWoW", productionLinesList);
+	    
+		return "production_lines";*/
+		
 		
 	}
 	

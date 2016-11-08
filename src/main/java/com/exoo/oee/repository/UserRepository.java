@@ -18,6 +18,8 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
 	User findByDailyReports(DailyReport report);
 
+	Page<User> findByAuthorizedProductionLines(ProductionLine pL, Pageable pageable);
+
 	List<User> findByAuthorizedProductionLines(ProductionLine pL);
 
 	/*List<User> findByAuthorizedProductionLines(int productionLineID);*/

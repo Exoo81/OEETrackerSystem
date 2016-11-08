@@ -67,20 +67,23 @@ public class ProductionLineService {
 		return productionLineRepository.findOne(productionLineID);
 	}
 
-	public List<User> findAllAuthorizedUsers(int productionLineID) {
+	public Page<User> findAllAuthorizedUsers(int productionLineID, Integer pageNumber) {
+		
+		PageRequest request = new PageRequest(pageNumber - 1, 10, Sort.Direction.DESC, "id");
 		
 		ProductionLine pL = productionLineRepository.findOne(productionLineID);
+		Page<User> pages = userRepository.findByAuthorizedProductionLines(pL, request);
 		
-		List<User> users = userRepository.findByAuthorizedProductionLines(pL);
+		List<User> users = pages.getContent();
 		
 		for(User user : users){
+			
 			UserDetails userDetails = userDetailsRepository.findByUser(user);
 			user.setUserDetails(userDetails);
+			//System.out.println("User: " + user.toString());
 		}
 		
-		//System.out.println(users);
-		
-		return users;
+		return pages;
 	}
 
 	public void deleteAuthorizedProductionLine(int idUser, int productionLineID) {

@@ -48,7 +48,7 @@ sortowanie tabeli szukanie po .....<br>
 			<td class="td-oee">
 				<c:choose>
 					<c:when test="${not empty productionLine.authorizedUsers}">
-						<a class="btn btn-success" href='<spring:url value="/production_lines/users/${productionLine.id}.html" />'>
+						<a class="btn btn-success" href='<spring:url value="/1/production_lines/users/${productionLine.id}.html" />'>
 		  					<i class="fa fa-file-text-o" title="Authorized Users List" aria-hidden="true"></i>
 						</a>
 					</c:when>
