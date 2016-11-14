@@ -9,9 +9,9 @@
 
 
 <!-- TODO:
-edycja usera <form w modalu z widoku tabeli i to samo juz zrovic z lista users i userdetail www
-opcja znalezienia 
-dodania nowego  -->
+
+ 
+dodania nowego wyszukanie przez  jsp a potem sprobuj w modal w czasie rzeczywistym fimlik: AutoComplete Search with Spring MVC and Hibernate in Eclipse-->
 
 <c:if test="${param.removeFromList eq true}">
 		<div class="alert alert-success">User deleted from the authorized list !</div>
@@ -19,9 +19,14 @@ dodania nowego  -->
 
 <security:authorize access="hasRole('ROLE_ADMIN')">
 	<!-- Button trigger modal add line -->
-	<button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#addUserModal">
-		<i class="fa fa-plus" aria-hidden="true"></i> &nbsp;Add new user
-	</button>
+	<span data-toggle="modal" data-target="#addUserModal" data-pL="${productionLine.id}">
+		<button type="button" class="btn btn-success btn-sm" data-toggle="tooltip" title="Add new user to list" data-placement="bottom" >
+			<i class="fa fa-plus" aria-hidden="true"></i> &nbsp;Add a new user to the authorized list
+		</button>
+	</span>
+	
+		
+	
 	<br>
 	<br>
 </security:authorize>
@@ -54,12 +59,12 @@ dodania nowego  -->
 			</td>
 			<security:authorize access="hasRole('ROLE_ADMIN')">
 				<td class="td-oee dr-oee">
-				<!-- Button trigger modal add line -->
-					<span data-toggle="modal" data-target="#editUserDetails" data-email="${user.userDetails.email}" data-jobtitle="${user.userDetails.jobTitle}" data-username="${user.username}">
+					<!-- Button trigger modal add line -->
+					<%-- <span data-toggle="modal" data-target="#editUserDetails" data-email="${user.userDetails.email}" data-jobtitle="${user.userDetails.jobTitle}" data-username="${user.username}">
 						<button type="button" class="btn btn-info btn-sm" data-toggle="tooltip" title="Edit user details" data-placement="left" >
 							<i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>
 						</button>
-					</span>
+					</span> --%>
 					<a class="btn btn-danger btn-sm triggerRemove" id="toolTipID" href="<spring:url value="/production_lines/remove/user/${user.id}/${productionLine.id}.html" />" data-toggle="tooltip" title="Remove user from authorized list" data-placement="left">
 						<i class="fa fa-minus fa-lg" aria-hidden="true"></i>
 					</a>
@@ -133,7 +138,7 @@ dodania nowego  -->
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title" id="myModalLabel">Find user ...</h4>
+					<h4 class="modal-title" id="myModalLabel">Find user</h4>
 				</div>
 				<div class="modal-body">
 				
@@ -163,8 +168,8 @@ dodania nowego  -->
 <%-- </form:form> --%>
 
 
-<!-- Modal edit userdetails -->
-<div class="modal fade" id="editUserDetails" tabindex="-1" role="dialog" aria-labelledby="editEmailModalLabel">
+<!--TO DELETE Modal edit userdetails -->
+<!-- <div class="modal fade" id="editUserDetails" tabindex="-1" role="dialog" aria-labelledby="editEmailModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -189,7 +194,7 @@ dodania nowego  -->
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <!-- Modal Remove -->
 <div class="modal fade" id="modalRemoveInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -210,9 +215,9 @@ dodania nowego  -->
   </div>
 </div>
 
-<script>
+<!-- <script>
 
-$('document').ready(function(){
+  $('document').ready(function(){
 	
 	$('#editUserDetails').on('show.bs.modal', function (event) {
 		  var button = $(event.relatedTarget) // Button that triggered the modal
@@ -226,7 +231,7 @@ $('document').ready(function(){
 		  modal.find('.modal-body input[id=jobTitle]').val(currentJobTitle)
 		  modal.find('.modal-body input[id=email]').val(currentEmail)
 		})
-});
+}); 
 
 
-</script>
+</script> -->

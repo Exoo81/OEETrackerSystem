@@ -10,8 +10,8 @@
 		<intercept-url pattern="/login**" access="! isAuthenticated()" />
 		<intercept-url pattern="/index**" access="isAuthenticated()" />
 		
+		<intercept-url pattern="/*/production_lines/**" access="isAuthenticated()" />
 		<intercept-url pattern="/*/production_lines**" access="isAuthenticated()" />
-		<intercept-url pattern="/production_lines**" access="isAuthenticated()" />
 		<intercept-url pattern="/production_lines/remove/**" access="hasRole('ROLE_ADMIN')" />
 		
 		<!-- <intercept-url pattern="/dailyReport**" access="isAuthenticated()" /> -->

@@ -46,13 +46,11 @@ public class InitDbService {
 	private ProductionLineRepository productionLineRepository;
 	
 	@PostConstruct
-	public void init(){
-		//fillDB();
+	public void fillDB(){		
+		//init();	
 	}
 	
-	
-	public void fillDB(){
-		
+	public void init(){
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy HH:mm:ss"); 
 		
 		Role adminRole = new Role();
